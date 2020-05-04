@@ -29,9 +29,6 @@ Rails.application.routes.draw do
     resource :genres, only: [:create, :update, :destroy]
   end
 
-  
-  resources :folders, only: [:create,:destroy,:update]
-  resources :folder_bookmarks, only: [:create,:destroy,:update]
 
 
   devise_for :admins, controllers: {
