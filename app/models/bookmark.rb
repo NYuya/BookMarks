@@ -1,4 +1,5 @@
 class Bookmark < ApplicationRecord
+
   attachment :image
   belongs_to :customer
   belongs_to :genre
@@ -14,9 +15,6 @@ class Bookmark < ApplicationRecord
 
   validates :bookmark_name, presence: true
   validates :bookmark_description, presence: true, length: {maximum: 200}
-
-
-
 
 
 

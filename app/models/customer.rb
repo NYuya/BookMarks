@@ -35,5 +35,4 @@ class Customer < ApplicationRecord
   attachment :customer_images, destroy: false
 
 
-
 end
