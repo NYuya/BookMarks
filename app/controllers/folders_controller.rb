@@ -1,4 +1,4 @@
-class Customers::FoldersController < ApplicationController
+class FoldersController < ApplicationController
   def create
   end
 
