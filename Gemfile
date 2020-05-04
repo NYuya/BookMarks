@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
+  gem 'hirb-unicode'              #日本語に対応する
+
 end
 
 group :development do
@@ -48,7 +51,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop-airbnb'
+  
 end
 
 group :test do
@@ -65,7 +68,40 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
-gem 'rspec-rails'
-gem 'hirb'
-gem 'hirb-unicode'
+gem 'font-awesome-sass'         #アイコン
+
+gem 'rspec-rails'               #
+gem 'hirb'                      #出力結果を表形式で表示する
+
+gem "refile", require: "refile/rails", github: 'manfe/refile' #画像挿入する
+gem "refile-mini_magick"        #画像のサイズ変更
+gem 'ransack'                   #検索機能
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
