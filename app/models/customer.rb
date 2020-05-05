@@ -32,7 +32,7 @@ class Customer < ApplicationRecord
     self.followings.include?(other_customer)
   end
 
-  attachment :customer_images, destroy: false
+  attachment :customer_image, destroy: false
 
 
 end

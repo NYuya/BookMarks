@@ -3,6 +3,7 @@ class CreateBookmarks < ActiveRecord::Migration[5.2]
     create_table :bookmarks do |t|
       t.integer :customer_id
       t.string :bookmark_name
+      t.string :bookmark_url
       t.text :bookmark_description
       t.integer :genre_id
       t.string :bookmark_image_id

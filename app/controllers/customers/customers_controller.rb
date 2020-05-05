@@ -1,6 +1,9 @@
 class Customers::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
+    @bookmarks = @customer.bookmarks
+    @newbookmark = Bookmark.new
+    
   end
 
   def edit

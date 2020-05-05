@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_115504) do
+ActiveRecord::Schema.define(version: 2020_05_05_095804) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_115504) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer "customer_id"
     t.string "bookmark_name"
+    t.string "bookmark_url"
     t.text "bookmark_description"
     t.integer "genre_id"
     t.string "bookmark_image_id"
