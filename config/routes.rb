@@ -18,10 +18,6 @@ Rails.application.routes.draw do
       resources :customers, only: [:show, :edit, :update]
   end
 
-  get 'followed/:id' => 'relationships#followed', as: 'followed'
-  get 'follower/:id' => 'relationships#follower', as: 'follower'
-  resources :relationships, only: [:create, :destroy]
-
 
   resources :bookmarks do
     resource :favorites, only: [:create, :destroy]
@@ -29,7 +25,11 @@ Rails.application.routes.draw do
     resource :genres, only: [:create, :update, :destroy]
   end
 
-  
+  resources :relationships, only: [:create, :destroy]
+
+  get 'followed/:id' => 'relationships#followed', as: 'followed'
+  get 'follower/:id' => 'relationships#follower', as: 'follower'
+
   resources :folders, only: [:create,:destroy,:update]
   resources :folder_bookmarks, only: [:create,:destroy,:update]
 
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
         resources :customers, only: [:show,:index,:edit, :update]
         resources :bookmark_comments, only: [:index, :show, :update, :destroy]
     end
+
 
   # # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

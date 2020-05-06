@@ -23,6 +23,7 @@
             <th><%= link_to @customer.followed.count , follower_path(@customer.id) %></th>
           </tr>
       </table>
+        <%= render "relationships/follow_button", customer: @customer %>
 
         <%= link_to '',edit_customer_path(@customer), class: "col-xs-8 col-xs-offset-2 text-center btn btn-default glyphicon glyphicon-wrench edit_user_#{@customer.id}" %>
   </div>
@@ -54,6 +55,7 @@
             <td><%= link_to bookmark.bookmark_name, bookmark, class: "book_#{bookmark.id}" %></td>
             <td><%= link_to bookmark.bookmark_url, bookmark.bookmark_url  %></td>
             <td><%= bookmark.bookmark_description %></td>
+            
           </tr>
         <% end %>
       </tbody>

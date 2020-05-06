@@ -1,14 +1,12 @@
-<h1>Bookmarks#top</h1>
 
-
-<h2>BookMarks</h2> <!--books一覧 -->
+<h3>BookMarks</h3> <!--books一覧 -->
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
-          <th></th>
-          <th>Title</th>
-          <th>Opinion</th>
-          <th colspan="3"></th>
+          <th>1</th>
+          <th>サイトURL</th>
+          <th>ユーザー名</th>
+          <th>いいね</th>
         </tr>
       </thead>
       <tbody>
@@ -16,10 +14,19 @@
           <tr>
             <td><%= link_to bookmark.bookmark_name, bookmark, class: "book_#{bookmark.id}" %></td>
             <td><%= link_to bookmark.bookmark_url, bookmark.bookmark_url %></td>
-            <td><%= bookmark.bookmark_description %></td>
+            <td>
+			        <%= link_to (bookmark.customer) do %>
+								<%= attachment_image_tag(bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+							<% end %>
+						</td>
             <td id="favorites_buttons_<%= bookmark.id %>">
-              <%= render 'favorites/favorite', bookmark: bookmark %>
+              <%= render partial: 'favorites/favorite', locals: { bookmark: bookmark} %>
             </td>
+            <td>
+              <iframe src="<%= bookmark.bookmark_url %>" width="200" height="150" scrolling=”auto”>
+              </iframe>
+            </td>
+
           </tr>
         <% end %>
       </tbody>
