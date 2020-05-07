@@ -76,6 +76,7 @@ gem 'hirb'                      #出力結果を表形式で表示する
 gem "refile", require: "refile/rails", github: 'manfe/refile' #画像挿入する
 gem "refile-mini_magick"        #画像のサイズ変更
 gem 'ransack'                   #検索機能
+gem 'nokogiri'                  #スクレイピング
 
 
 

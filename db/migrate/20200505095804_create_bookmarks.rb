@@ -7,7 +7,7 @@ class CreateBookmarks < ActiveRecord::Migration[5.2]
       t.text :bookmark_description
       t.integer :genre_id
       t.string :bookmark_image_id
-      t.boolean :is_bookmark_status
+      t.boolean :is_bookmark_status, default: false, null: false
       t.string :bookmark_screenshot_id
 
       t.timestamps

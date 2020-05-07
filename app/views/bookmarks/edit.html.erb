@@ -1,0 +1,23 @@
+
+	<%= form_for(@bookmark) do |f| %>
+		<div class="field row">
+			<%= f.label :bookmark_name %>
+			<%= f.text_field :bookmark_name, class: "col-xs-12 book_title" %>
+		</div>
+
+		<div class="field row">
+			<%= f.label :Opinion %> <!-- ここを変更 -->
+			<%= f.text_area :bookmark_description, class: "col-xs-12 book_body" %>
+		</div>
+
+		<label><%= f.radio_button :is_bookmark_status, "false" %>非公開</label>
+		<label><%= f.radio_button :is_bookmark_status, "ture" %>公開</label>
+
+		<div class="actions row">
+			<%= f.submit class: "btn btn-primary col-xs-12" %>
+		</div>
+	<% end %>
+
+<%= link_to "Show", @bookmark, class: "bookmark_#{@bookmark.id}" %>
+<%= link_to "Back", bookmarks_path, class: "back" %>
+

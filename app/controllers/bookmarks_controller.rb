@@ -1,15 +1,15 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_customer!
-  before_action :correct_customer, only: [:edit, :update, :destroy]
+
 
 
   def top
     @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
+
   end
 
   def show
     @bookmark = Bookmark.find(params[:id])
-    @newbookmark = Bookmark.new
     @bookmark_comment = BookmarkComment.new
   end
 
@@ -57,11 +57,6 @@ class BookmarksController < ApplicationController
     params.require(:bookmark).permit(:customer_id, :bookmark_name, :bookmark_url, :bookmark_description, :genre_id, :bookmark_image_id, :is_bookmark_status, :bookmark_screenshot_id)
   end
 
-  def correct_user
-    @bookmark = Bookmark.find(params[:id])
-        if @bookmark.customer.id != current_customer.id
-          redirect_to bookmarks_path(@bookmarks)
-        end
-    end
+
 
 end

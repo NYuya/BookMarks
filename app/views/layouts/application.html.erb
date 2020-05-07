@@ -17,23 +17,19 @@
     <header>
       <div class="container">
           <% if admin_signed_in? %>
-                    <ul>
                       <li><%= link_to ' ブックマーク一覧', admins_bookmarks_path %></li>
                       <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
-                    </ul>
           <% elsif customer_signed_in? %>
-                    <ul>
-                      <li><%= link_to 'トップページ', root_path, class: "btn btn-default" %></li>
-                      <li><%= link_to 'マイページ', customer_path(current_customer), class: "btn btn-default" %></li>
+                      <li class="active"><%= link_to 'トップページ', root_path, class: "btn btn-default" %></li>
+                      <li><%= link_to 'Myブックマーク', customer_path(current_customer), class: "btn btn-default" %></li>
+                      <li><%= link_to 'みんなのブックマーク', bookmarks_path(@bookmarks), class: "btn btn-default" %></li>
                       <li><a rel="nofollow" data-method="delete" href="/customers/sign_out", class="btn btn-default">ログアウト</a></li>
-                    </ul>
           <% else %>
-                    <ul>
                       <li><%= link_to ' トップページ', root_path, class: "btn btn-default" %></li>
                       <li><a href="/customers/sign_up", class="btn btn-default">新規登録</a></li>
                       <li><a href="/customers/sign_in", class="btn btn-default">ログイン</a></li>
-                    </ul>
           <% end %>
+        </ul>
       </div>
     </header>
 
