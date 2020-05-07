@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
 
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_comments, dependent: :destroy
+  has_many :folders, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow

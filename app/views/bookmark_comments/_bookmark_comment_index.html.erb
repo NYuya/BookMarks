@@ -1,0 +1,14 @@
+<% @bookmark.bookmark_comments.each do |bookmark_comment| %>
+  <li class="bookmark_comment"><%= bookmark_comment.created_at.strftime('%Y/%m/%d') %>
+    <div class="bookmark_comment">
+			<%= link_to (bookmark_comment.customer) do %>
+				<%= attachment_image_tag(bookmark_comment.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %><br>
+				<%= bookmark_comment.customer.customer_name %>
+			<% end %>
+			<%= bookmark_comment.bookmark_comment %>
+			<% if bookmark_comment.customer == current_customer %>
+				<%= link_to "Destroy", bookmark_bookmark_comments_path(@bookmark, bookmark_comment_id: bookmark_comment.id), method: :delete , class: "btn-sm btn-danger" %>
+			<% end %>
+    </div>
+  </li>
+<% end %>

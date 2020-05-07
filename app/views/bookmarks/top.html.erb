@@ -4,36 +4,41 @@
       <thead>
         <tr>
           <th>ユーザー</th>
+          <th>サイト画面</th>
           <th>サイトURL</th>
           <th>詳細</th>
           <th>いいね</th>
-          <th>コメント</th>
         </tr>
       </thead>
       <tbody>
         <% @bookmarks.each do |bookmark| %>
-          <tr>
-            <td>
-              <%= link_to (bookmark.customer) do %>
-                <%= attachment_image_tag(bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
-                <br><%= bookmark.customer.customer_name %>
-              <% end %>
-            </td>
-            <td>
-              <%= bookmark.bookmark_name %>サイト名を自動で引っ張ってくる
-              <br>
-              <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %>
-              <br>
-              <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
-            </td>
-            <td>
-              <%= link_to "詳細",bookmark_path(bookmark), class: "btn-sm btn-primary edit_bookmark_#{bookmark.id}" %>
-            </td>
-            <td id="favorites_buttons_<%= bookmark.id %>">
-              <%= render partial: 'favorites/favorite', locals: { bookmark: bookmark} %>
-            </td>
-
-          </tr>
+          <% if bookmark.is_bookmark_status != false %>
+            <tr>
+              <td>
+                <%= link_to (bookmark.customer) do %>
+                  <%= attachment_image_tag(bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+                  <br><%= bookmark.customer.customer_name %>
+                <% end %>
+              </td>
+              <td>
+                <iframe src="<%= bookmark.bookmark_url %>" width="200" height="150" scrolling=”auto”>
+                </iframe>
+              </td>
+              <td>
+                <%= bookmark.bookmark_name %>サイト名を自動で引っ張ってくる
+                <br>
+                <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %>
+                <br>
+                <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
+              </td>
+              <td>
+                <%= link_to "詳細",bookmark_path(bookmark), class: "btn-sm btn-primary edit_bookmark_#{bookmark.id}" %>
+              </td>
+              <td id="favorites_buttons_<%= bookmark.id %>">
+                <%= render partial: 'favorites/favorite', locals: { bookmark: bookmark} %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

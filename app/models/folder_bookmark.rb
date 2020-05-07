@@ -1,8 +1,8 @@
 class FolderBookmark < ApplicationRecord
 
-  has_many :bookmarks,dependent: :destroy
-
+  belongs_to :customer
   belongs_to :folder
+  has_many :bookmarks,dependent: :destroy
 
 
 end

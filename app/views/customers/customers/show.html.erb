@@ -2,6 +2,7 @@
 
 <div class="row">
   <div class="col-xs-3">
+    <div class="row">
       <table class="table table-hover">
           <tr>
             <%= attachment_image_tag(@customer, :customer_image, :fill, 200, 200, fallback: "no_image.jpg") %>
@@ -26,6 +27,24 @@
         <%= render "relationships/follow_button", customer: @customer %>
 
         <%= link_to '',edit_customer_path(@customer), class: "col-xs-8 col-xs-offset-2 text-center btn btn-default glyphicon glyphicon-wrench edit_user_#{@customer.id}" %>
+    </div>
+    <div class="row">
+
+        <h4>New Folder</h4>
+          <%= form_for(@newfolder) do |f| %>
+            <div class="field row">
+              <%= f.label :フォルダ新規作成 %>
+              <%= f.text_field :folder_name, class: "col-xs-8 col-xs-offset-1 book_title" %>
+              <%= f.submit "登録", class: "btn btn-primary col-xs-2 text-center" %>
+            </div>
+          <% end %>
+          <% @folders.each do |folder| %>
+          <tr>
+            <td><%= folder.folder_name %></td>
+            
+          </tr>
+        <% end %>
+    </div>
   </div>
 
   <div class="col-xs-9">
@@ -43,18 +62,35 @@
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>URL</th>
+          <th>サイト画面</th>
+          <th>Title/URL</th>
           <th>Opinion</th>
-          <th colspan="3"></th>
+          <th colspan="3">公開状況</th>
         </tr>
       </thead>
       <tbody>
         <% @bookmarks.each do |bookmark| %>
           <tr>
-            <td><%= link_to bookmark.bookmark_name, bookmark, class: "book_#{bookmark.id}" %></td>
-            <td><%= link_to bookmark.bookmark_url, bookmark.bookmark_url  %></td>
+            <td>
+              <iframe src="<%= bookmark.bookmark_url %>" width="200" height="150" scrolling=”auto”>
+              </iframe>
+            </td>
+            <td>
+              <%= link_to bookmark.bookmark_name, bookmark, class: "book_#{bookmark.id}" %>
+              <br>
+              <br>
+              <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %>
+              <br>
+              <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
+            </td>
             <td><%= bookmark.bookmark_description %></td>
+            <td>
+              <% if bookmark.is_bookmark_status == false %>
+                <span class="text-danger">非公開中</span>
+              <% else %>
+                <span class="text-success">公開中</span>
+              <% end %>
+            </td>
             <td>
               <% if bookmark.customer == current_customer %>
               <%= link_to "Edit",edit_bookmark_path(bookmark), class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>

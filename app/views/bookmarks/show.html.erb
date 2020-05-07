@@ -13,6 +13,13 @@
 				<td><%= @bookmark.bookmark_description %></td>
 				<td><%= link_to @bookmark.bookmark_url, @bookmark.bookmark_url %></td>
 				<td>
+					<% if @bookmark.is_bookmark_status == false %>
+            <span class="text-danger">非公開中</span>
+          <% else %>
+            <span class="text-success">公開中</span>
+          <% end %>
+				</td>
+				<td>
 					<% if @bookmark.customer == current_customer %>
 					<%= link_to "Edit",edit_bookmark_path(@bookmark), class: "btn-sm btn-success edit_bookmark_#{@bookmark.id}" %>
 					<% end %>
@@ -35,6 +42,11 @@
 				</td>
 			</tr>
 		</table>
+
+
+		<ol><%= render 'bookmark_comments/bookmark_comment_index' %></ol>
+
+		<%= render 'bookmark_comments/bookmark_comment_form' %>
 
 
 
