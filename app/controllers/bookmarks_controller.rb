@@ -20,6 +20,9 @@ class BookmarksController < ApplicationController
 
   def create
     @newbookmark = Bookmark.new(bookmark_params) #Bookmarkモデルのテーブルを使用しているのでbookmarkコントローラで保存する。
+    @tittle = @newbookmark.get_tittle(params[:bookmark][:bookmark_url])
+    @newbookmark.bookmark_name = @tittle
+
     @newbookmark.customer_id = current_customer.id
     @customer = current_customer
     if @newbookmark.save #入力されたデータをdbに保存する。
