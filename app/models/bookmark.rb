@@ -3,9 +3,11 @@ class Bookmark < ApplicationRecord
   belongs_to :customer
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   #presence trueは空欄の場合を意味する。
-  # belongs_to :folder
+  
   has_many :bookmark_comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	
+	attachment :bookmark_image
 
 
   def favorited_by?(customer)

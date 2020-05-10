@@ -2,6 +2,7 @@ class GenresController < ApplicationController
   
   def create
     @newgenre = Genre.new(genre_params)
+    @newgenre.customer_id = current_customer.id
     @customer = current_customer
   	if @newgenre.save
   		redirect_to customer_path(@customer.id),  notice: "successfully created Genre!"

@@ -1,8 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_customer!
 
-
-
   def top
     @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
 
@@ -35,6 +33,7 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @folders = Folder.all
   end
 
 

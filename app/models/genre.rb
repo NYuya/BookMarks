@@ -1,5 +1,8 @@
 class Genre < ApplicationRecord
-  has_many :bookmarks,dependent: :destroy
+
+  belongs_to :customer
+
+  # has_many :bookmarks,dependent: :destroy
 
   validates :genre_name, presence: true
 

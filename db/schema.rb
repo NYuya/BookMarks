@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_095804) do
     t.string "bookmark_url"
     t.text "bookmark_description"
     t.integer "genre_id"
+    t.integer "folder_id"
     t.string "bookmark_image_id"
     t.boolean "is_bookmark_status", default: false, null: false
     t.string "bookmark_screenshot_id"
