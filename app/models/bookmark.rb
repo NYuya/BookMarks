@@ -14,8 +14,6 @@ class Bookmark < ApplicationRecord
 
 
 
-
-
 # bookmark_nameスクレイピングーーーーー↓
 
 	require 'open-uri'

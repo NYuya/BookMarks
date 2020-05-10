@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get 'followed/:id' => 'relationships#followed', as: 'followed'
   get 'follower/:id' => 'relationships#follower', as: 'follower'
 
-  resources :folders, only: [:create,:destroy,:update]
+  resources :folders, only: [:show, :edit, :create, :destroy, :update]
   resources :folder_bookmarks, only: [:create,:destroy,:update]
 
 

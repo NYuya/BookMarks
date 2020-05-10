@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_095804) do
     t.text "bookmark_description"
     t.integer "genre_id"
     t.string "bookmark_image_id"
-    t.boolean "is_bookmark_status"
+    t.boolean "is_bookmark_status", default: false, null: false
     t.string "bookmark_screenshot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_095804) do
     t.datetime "remember_created_at"
     t.string "customer_name"
     t.text "customer_introduction"
-    t.boolean "is_customer_status"
+    t.boolean "is_customer_status", default: false, null: false
     t.string "customer_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_095804) do
 
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
-    t.boolean "is_active"
+    t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

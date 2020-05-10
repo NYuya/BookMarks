@@ -36,7 +36,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.text :customer_introduction
       t.string :email
       t.string :encrypted_password
-      t.boolean :is_customer_status
+      t.boolean :is_customer_status, default: false, null: false
       t.string :customer_image_id
 
       t.timestamps null: false

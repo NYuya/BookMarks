@@ -1,0 +1,26 @@
+{
+	"editor.tabSize": 2, //タブサイズ
+	"files.autoSave": "onFocusChange", //自動保存
+	"editor.formatOnType": true, //入力時自動フォーマット
+	"editor.formatOnSave": true, //保存時自動フォーマット
+	"editor.formatOnPaste": true, // ペースト時自動フォーマット
+	//"workbench.editor.enablePreview": false, //常に新しいタブで開く
+	"workbench.iconTheme": "material-icon-theme", //アイコン
+	"editor.minimap.enabled": false, //ミニマップ非表示
+	"workbench.startupEditor": "newUntitledFile", //ウェルカムページ非表示
+	//ターミナル文字色
+	"workbench.colorCustomizations": {
+		"terminal.foreground": "#FF76D5"
+	},
+	//erb補完
+	"emmet.includeLanguages": {
+		"erb": "html"
+	},
+	//erbフォーマット
+	"beautify.language": {
+		"html": [
+			"html",
+			"erb"
+		]
+	},
+}

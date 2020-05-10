@@ -3,6 +3,10 @@ class Customers::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @bookmarks = @customer.bookmarks
     @newbookmark = Bookmark.new
+
+    @genres = @customer.genres
+    @newgenre = Genre.new
+
     @folders = @customer.folders
     @newfolder = Folder.new
   end
