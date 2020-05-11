@@ -40,7 +40,16 @@
     </div>
 
     <div class="row">
-      <%= render "folders_index", folder: @folders %>
+      <h4>Folder index</h4>
+      <table class="table table-hover table-inverse">
+        <% @folders.each do |folder| %>
+        <tr>
+          <td><%= link_to folder.folder_name, edit_folder_path %></td>
+          <td><%=  %></td>
+          <td><%= link_to "消去", folder_path(folder.id), method: :delete , class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 

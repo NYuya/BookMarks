@@ -1,5 +1,21 @@
 class FoldersController < ApplicationController
 
+  def show
+    @customer = Customer.find(params[:id])
+    @bookmarks = @customer.bookmarks
+    @newbookmark = Bookmark.new
+
+    @genres = @customer.genres
+    @newgenre = Genre.new
+
+    @folders = @customer.folders
+    @newfolder = Folder.new
+  end
+
+  def edit
+    @folder = Folder.find(params[:id])
+  end
+
   def create
   	@newfolder = Folder.new(folder_params)
   	@newfolder.customer_id = current_customer.id
@@ -13,7 +29,7 @@ class FoldersController < ApplicationController
   end
 
 
-def update
+  def update
     @folder = Folder.find(params[:id])
     if @folder.update(folder_params)
       redirect_to customer_path(@customer.id), notice: "successfully updated folder!"
@@ -32,7 +48,7 @@ def update
 
   private
   def folder_params
-    params.require(:folder).permit(:customer_id, :bookmark_id, :folder_name, :pearent_folder_id)
+    params.require(:folder).permit(:folder_name, :pearent_folder_id)
   end
 
 end

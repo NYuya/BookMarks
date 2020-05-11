@@ -1,0 +1,8 @@
+<h2>フォルダ編集画面</h2>
+<%= form_for @folder, url:customer_path(@customer.id) do |f| %>
+<%= f.label :フォルダ %>
+<%= f.text_field :folder_name %>
+
+<%= f.submit class: "btn btn-primary" %>
+</div>
+<% end %>

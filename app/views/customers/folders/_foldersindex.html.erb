@@ -1,0 +1,10 @@
+<h4>Folder index</h4>
+<table class="table table-hover table-inverse">
+  <% @folders.each do |folder| %>
+  <tr>
+    <td><%= link_to folder.folder_name, customer_path(folder_id: folder.id) %></td>
+    <td><%=  %></td>
+    <td><%= link_to "消去", folder_path(folder.id), method: :delete , class: "btn btn-danger" %></td>
+  </tr>
+  <% end %>
+</table>
