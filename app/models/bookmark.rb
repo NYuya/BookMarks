@@ -6,6 +6,9 @@ class Bookmark < ApplicationRecord
   
   has_many :bookmark_comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+
+	# has_many :folder_bookmark_relations
+  belongs_to :folder
 	
 	attachment :bookmark_image
 

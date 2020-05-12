@@ -44,7 +44,7 @@
       <table class="table table-hover table-inverse">
         <% @folders.each do |folder| %>
         <tr>
-          <td><%= link_to folder.folder_name, edit_folder_path %></td>
+          <td><%= link_to folder.folder_name, folder_path(folder.id) %></td>
           <td><%=  %></td>
           <td><%= link_to "消去", folder_path(folder.id), method: :delete , class: "btn btn-danger" %></td>
         </tr>

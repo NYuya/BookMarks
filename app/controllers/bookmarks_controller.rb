@@ -24,7 +24,7 @@ class BookmarksController < ApplicationController
     @newbookmark.customer_id = current_customer.id
     @customer = current_customer
     if @newbookmark.save #入力されたデータをdbに保存する。
-      redirect_to customer_path(@customer.id), notice: "successfully created book!"#保存された場合の移動先を指定。
+      redirect_to customer_path(@customer.id), notice: "successfully created bookmark!"#保存された場合の移動先を指定。
     else
       @bookmarks = Bookmark.all
       render 'index'
@@ -33,7 +33,8 @@ class BookmarksController < ApplicationController
 
   def edit
     @bookmark = Bookmark.find(params[:id])
-    @folders = Folder.all
+    @folders = current_customer.folders
+
   end
 
 
@@ -57,7 +58,7 @@ class BookmarksController < ApplicationController
 
   private
   def bookmark_params
-    params.require(:bookmark).permit(:customer_id, :bookmark_name, :bookmark_url, :bookmark_description, :genre_id, :bookmark_image_id, :is_bookmark_status, :bookmark_screenshot_id)
+    params.require(:bookmark).permit(:customer_id, :bookmark_name, :bookmark_url, :bookmark_description, :genre_id, :folder_id, :bookmark_image, :is_bookmark_status, :bookmark_screenshot_id)
   end
 
 

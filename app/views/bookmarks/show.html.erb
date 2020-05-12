@@ -1,52 +1,52 @@
+<h2>Bookmark detail</h2>
+<table class="table">
+	<tr>
+		<td>
+			<%= link_to (@bookmark.customer) do %>
+			<%= attachment_image_tag(@bookmark.customer, :customer_image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
+			<%= @bookmark.customer.customer_name %>
+			<% end %>
+		</td>
+		<td><%= link_to @bookmark.bookmark_name, @bookmark %></td>
+		<td><%= @bookmark.bookmark_description %></td>
+		<td><%= link_to @bookmark.bookmark_url, @bookmark.bookmark_url %></td>
+		<td>
+			<% if @bookmark.folder %>
+			<%= @bookmark.folder.folder_name %> <%# フォルダの指定がない場合でもエラーが起きないようにするためのif文 %>
+			<% end %>
+		</td>
+		<td>
+			<% if @bookmark.is_bookmark_status == false %>
+			<span class="text-danger">非公開中</span>
+			<% else %>
+			<span class="text-success">公開中</span>
+			<% end %>
+		</td>
+		<td>
+			<% if @bookmark.customer == current_customer %>
+			<%= link_to "Edit",edit_bookmark_path(@bookmark), class: "btn-sm btn-success edit_bookmark_#{@bookmark.id}" %>
+			<% end %>
+		</td>
+		<td>
+			<% if @bookmark.customer == current_customer %>
+			<%= link_to "Destroy",@bookmark, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_bookmark_#{@bookmark.id}" %>
+			<% end %>
+		</td>
+		<td id="favorites_buttons_<%= @bookmark.id %>">
+			<%= render 'favorites/favorite', bookmark: @bookmark %>
+		</td>
 
-
-	<h2>Bookmark detail</h2>
-		<table class="table">
-			<tr>
-				<td>
-					<%= link_to (@bookmark.customer) do %>
-					<%= attachment_image_tag(@bookmark.customer, :customer_image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
-					<%= @bookmark.customer.customer_name %>
-					<% end %>
-				</td>
-				<td><%= link_to @bookmark.bookmark_name, @bookmark %></td>
-				<td><%= @bookmark.bookmark_description %></td>
-				<td><%= link_to @bookmark.bookmark_url, @bookmark.bookmark_url %></td>
-				<td>
-					<% if @bookmark.is_bookmark_status == false %>
-            <span class="text-danger">非公開中</span>
-          <% else %>
-            <span class="text-success">公開中</span>
-          <% end %>
-				</td>
-				<td>
-					<% if @bookmark.customer == current_customer %>
-					<%= link_to "Edit",edit_bookmark_path(@bookmark), class: "btn-sm btn-success edit_bookmark_#{@bookmark.id}" %>
-					<% end %>
-				</td>
-				<td>
-					<% if @bookmark.customer == current_customer %>
-					<%= link_to "Destroy",@bookmark, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_bookmark_#{@bookmark.id}" %>
-					<% end %>
-				</td>
-				<td id="favorites_buttons_<%= @bookmark.id %>">
-					<%= render 'favorites/favorite', bookmark: @bookmark %>
-				</td>
-
-				<td>
-				<div class="comment-list bt style-2" id="comments">
-				    <div class="float-wrapper">
-				        <h4 class="comment-count"><%= @bookmark.bookmark_comments.count %>件コメント</h4>
-				    </div>
+		<td>
+			<div class="comment-list bt style-2" id="comments">
+				<div class="float-wrapper">
+					<h4 class="comment-count"><%= @bookmark.bookmark_comments.count %>件コメント</h4>
 				</div>
-				</td>
-			</tr>
-		</table>
+			</div>
+		</td>
+	</tr>
+</table>
 
 
-		<ol><%= render 'bookmark_comments/bookmark_comment_index' %></ol>
+<ol><%= render 'bookmark_comments/bookmark_comment_index' %></ol>
 
-		<%= render 'bookmark_comments/bookmark_comment_form' %>
-
-
-
+<%= render 'bookmark_comments/bookmark_comment_form' %>

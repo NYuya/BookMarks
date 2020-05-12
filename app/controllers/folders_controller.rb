@@ -1,15 +1,13 @@
 class FoldersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
-    @bookmarks = @customer.bookmarks
+    @folder = Folder.find(params[:id])
+    @newfolder = Folder.new
+    @bookmarks = @folder.bookmarks
     @newbookmark = Bookmark.new
 
-    @genres = @customer.genres
-    @newgenre = Genre.new
-
-    @folders = @customer.folders
-    @newfolder = Folder.new
+    @customer = @folder.customer
+    @folders = current_customer.folders
   end
 
   def edit
