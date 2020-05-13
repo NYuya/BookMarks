@@ -8,7 +8,7 @@ class Bookmark < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 
 	# has_many :folder_bookmark_relations
-  belongs_to :folder
+	belongs_to :folder, optional: true	#folderが指定されてなくてもブックマークできるようにするため
 	
 	attachment :bookmark_image
 
@@ -43,5 +43,27 @@ class Bookmark < ApplicationRecord
 	doc.title
 	end
 # bookmark_nameスクレイピングーーーーー↑
+
+# bookmark_imageスクレイピングーーーーー↓
+
+	require 'open-uri'
+	require 'nokogiri'
+
+	def get_thumbnail(url)
+
+	charset = nil
+	html = open(url) do |f|
+	  charset = f.charset # 文字種別を取得
+	  f.read # htmlを読み込んで変数htmlに渡す
+	end
+
+	# htmlをパース(解析)してオブジェクトを生成
+	doc = Nokogiri::HTML.parse(html, nil, charset)
+
+	p doc.css('img').attribute('src').value	# サムネイル画像
+	p doc.css('a').attribute('href').value	# サムネイル画像
+	doc.thumbnail
+	end
+# bookmark_imageスクレイピングーーーーー↑
 
 end

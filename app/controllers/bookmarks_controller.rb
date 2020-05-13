@@ -18,14 +18,21 @@ class BookmarksController < ApplicationController
 
   def create
     @newbookmark = Bookmark.new(bookmark_params) #Bookmarkモデルのテーブルを使用しているのでbookmarkコントローラで保存する。
-    @tittle = @newbookmark.get_tittle(params[:bookmark][:bookmark_url])
+
+    @tittle = @newbookmark.get_tittle(params[:bookmark][:bookmark_url]) #スクレイピング「タイトル」
     @newbookmark.bookmark_name = @tittle
+
+    # @thumbnail = @newbookmark.get_thumbnail(params[:bookmark][:bookmark_url]) #スクレイピング「サムネ画像」
+    # @newbookmark.bookmark_image = @thumbnail
 
     @newbookmark.customer_id = current_customer.id
     @customer = current_customer
     if @newbookmark.save #入力されたデータをdbに保存する。
       redirect_to customer_path(@customer.id), notice: "successfully created bookmark!"#保存された場合の移動先を指定。
     else
+      @newbookmark.errors.full_messages.each do |msg|
+        p msg
+      end
       @bookmarks = Bookmark.all
       render 'index'
     end
