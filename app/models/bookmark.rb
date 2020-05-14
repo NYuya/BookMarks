@@ -51,18 +51,25 @@ class Bookmark < ApplicationRecord
 
 	def get_thumbnail(url)
 
-	charset = nil
-	html = open(url) do |f|
-	  charset = f.charset # 文字種別を取得
-	  f.read # htmlを読み込んで変数htmlに渡す
-	end
+		charset = nil
+		html = open(url) do |f|
+			charset = f.charset # 文字種別を取得
+			f.read # htmlを読み込んで変数htmlに渡す
+		end
 
-	# htmlをパース(解析)してオブジェクトを生成
-	doc = Nokogiri::HTML.parse(html, nil, charset)
+		# htmlをパース(解析)してオブジェクトを生成
+		doc = Nokogiri::HTML.parse(html, nil, charset)
 
-	p doc.css('img').attribute('src').value	# サムネイル画像
-	p doc.css('a').attribute('href').value	# サムネイル画像
-	doc.thumbnail
+
+		
+		doc.xpath('//li[@class="BookMark-thumbnail"]').each do |node|
+
+		p node.css('img').attribute('src').value	# サムネイル画像
+		p node.css('a').attribute('href').value	# サムネイル画像
+		p doc.thumbnail
+		doc.thumbnail
+		end
+
 	end
 # bookmark_imageスクレイピングーーーーー↑
 

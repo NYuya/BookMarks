@@ -42,6 +42,11 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'hirb-unicode'              #日本語に対応する
 
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
+
 end
 
 group :development do

@@ -22,8 +22,8 @@ class BookmarksController < ApplicationController
     @tittle = @newbookmark.get_tittle(params[:bookmark][:bookmark_url]) #スクレイピング「タイトル」
     @newbookmark.bookmark_name = @tittle
 
-    # @thumbnail = @newbookmark.get_thumbnail(params[:bookmark][:bookmark_url]) #スクレイピング「サムネ画像」
-    # @newbookmark.bookmark_image = @thumbnail
+    @thumbnail = @newbookmark.get_thumbnail(params[:bookmark][:bookmark_url]) #スクレイピング「サムネ画像」
+    @newbookmark.bookmark_image = @thumbnail
 
     @newbookmark.customer_id = current_customer.id
     @customer = current_customer
