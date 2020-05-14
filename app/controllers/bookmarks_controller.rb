@@ -24,7 +24,7 @@ class BookmarksController < ApplicationController
 
     @thumbnail = @newbookmark.get_thumbnail(params[:bookmark][:bookmark_url]) #スクレイピング「サムネ画像」
     @newbookmark.bookmark_image = @thumbnail
-
+    
     @newbookmark.customer_id = current_customer.id
     @customer = current_customer
     if @newbookmark.save #入力されたデータをdbに保存する。

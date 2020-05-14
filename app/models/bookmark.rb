@@ -59,15 +59,12 @@ class Bookmark < ApplicationRecord
 
 		# htmlをパース(解析)してオブジェクトを生成
 		doc = Nokogiri::HTML.parse(html, nil, charset)
-
-
 		
 		doc.xpath('//li[@class="BookMark-thumbnail"]').each do |node|
 
 		p node.css('img').attribute('src').value	# サムネイル画像
 		p node.css('a').attribute('href').value	# サムネイル画像
-		p doc.thumbnail
-		doc.thumbnail
+		
 		end
 
 	end
