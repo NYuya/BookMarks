@@ -21,7 +21,8 @@
         <% end %>
       </td>
       <td>
-        <iframe src="<%= bookmark.bookmark_url %>" width="200" height="150" scrolling=”auto”>
+        <iframe id="inline-frame" scrolling="no" src="<%= bookmark.bookmark_url %>" width="400px" height="150px"
+          scrolling=”auto” sandbox>
         </iframe>
       </td>
       <td>

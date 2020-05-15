@@ -1,0 +1,19 @@
+<header>
+  <div class="container">
+    <ul class="nav">
+      <% if admin_signed_in? %>
+      <li><%= link_to ' ブックマーク一覧', admins_bookmarks_path %></li>
+      <li><a rel="nofollow" href="/admins/sign_out">ログアウト</a></li>
+      <% elsif customer_signed_in? %>
+      <li class="active"><%= link_to 'トップページ', root_path %></li>
+      <li><%= link_to 'Myブックマーク', customer_path(current_customer) %></li>
+      <li><%= link_to 'みんなのブックマーク', bookmarks_path(@bookmarks) %></li>
+      <li><a rel="nofollow" data-method="delete" href="/customers/sign_out">ログアウト</a></li>
+      <% else %>
+      <li><%= link_to ' トップページ', root_path %></li>
+      <li><a href="/customers/sign_up">新規登録</a></li>
+      <li><a href="/customers/sign_in">ログイン</a></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
