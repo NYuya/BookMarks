@@ -38,7 +38,7 @@
           <li><%= link_to ' 顧客一覧', admins_customers_path %></li>
           <li><a rel="nofollow" href="/admins/sign_out">ログアウト</a></li>
           <% elsif customer_signed_in? %>
-          <li class="active"><%= link_to 'トップページ', root_path %></li>
+          <li><%= link_to 'トップページ', root_path %></li>
           <li><%= link_to 'Myブックマーク', customer_path(current_customer) %></li>
           <li><%= link_to 'みんなのブックマーク', bookmarks_path(@bookmarks) %></li>
           <li><a rel="nofollow" data-method="delete" href="/customers/sign_out">ログアウト</a></li>
@@ -53,6 +53,8 @@
   </header>
 
   <main>
+    <br>
+    <br>
     <div class="container">
       <%= yield %>
     </div>
