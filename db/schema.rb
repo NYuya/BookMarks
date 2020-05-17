@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_095804) do
+ActiveRecord::Schema.define(version: 2020_05_17_104717) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(version: 2020_05_05_095804) do
     t.string "bookmark_image_id"
     t.boolean "is_bookmark_status", default: false, null: false
     t.string "bookmark_screenshot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customer_rooms", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -100,6 +115,11 @@ ActiveRecord::Schema.define(version: 2020_05_05_095804) do
     t.index ["customer_id", "follow_id"], name: "index_relationships_on_customer_id_and_follow_id", unique: true
     t.index ["customer_id"], name: "index_relationships_on_customer_id"
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

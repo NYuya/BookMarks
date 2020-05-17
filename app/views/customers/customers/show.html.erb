@@ -28,6 +28,11 @@
 
       <%= link_to 'プロフィール編集',edit_customer_path(@customer), class: "col-xs-8 col-xs-offset-2 text-center btn btn-default glyphicon glyphicon-wrench edit_user_#{@customer.id}" %>
     </div>
+
+    <% if current_customer != @customer %>
+    <%= link_to 'chatを始める', chat_path(@customer.id)%>
+    <% end %>
+
     <div class="row">
       <h4>New Folder</h4>
       <%= form_for @newfolder do |f| %>

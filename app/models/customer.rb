@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarks
   has_many :bookmark_comments, dependent: :destroy
   has_many :folders, dependent: :destroy
   has_many :genres, dependent: :destroy
@@ -19,6 +19,10 @@ class Customer < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy # フォロワー取得
   has_many :following_customer, through: :follower, source: :customer # 自分がフォローしている人
   has_many :follower_customer, through: :followed, source: :follow # 自分をフォローしている人
+
+  has_many :customer_rooms
+  has_many :chats
+  has_many :rooms, through: :customer_rooms
 
   def follow(other_customer)
     unless self == other_customer

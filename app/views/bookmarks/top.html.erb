@@ -6,8 +6,8 @@
       <th>ユーザー</th>
       <th>サイト画面</th>
       <th>サイトURL</th>
-      <th>詳細</th>
       <th>いいね</th>
+      <th>詳細</th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +21,7 @@
         <% end %>
       </td>
       <td>
-        <iframe id="inline-frame" scrolling="no" src="<%= bookmark.bookmark_url %>" width="400px" height="150px"
+        <iframe id="inline-frame" scrolling="no" src="<%= bookmark.bookmark_url %>" width="300px" height="100px"
           scrolling=”auto” sandbox>
         </iframe>
       </td>
@@ -32,11 +32,16 @@
         <br>
         <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
       </td>
-      <td>
-        <%= link_to "詳細",bookmark_path(bookmark), class: "btn-sm btn-primary edit_bookmark_#{bookmark.id}" %>
-      </td>
       <td id="favorites_buttons_<%= bookmark.id %>">
         <%= render partial: 'favorites/favorite', locals: { bookmark: bookmark} %>
+      </td>
+      <td>
+        <div class="comment-list bt style-2" id="comments">
+          <div class="float-wrapper">
+            <h4 class="comment-count"><%= bookmark.bookmark_comments.count %>件コメント</h4>
+          </div>
+        </div>
+        <%= link_to "詳細ページへ",bookmark_path(bookmark), class: "btn-sm btn-primary edit_bookmark_#{bookmark.id}" %>
       </td>
     </tr>
     <% end %>

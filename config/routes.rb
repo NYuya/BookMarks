@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root 'bookmarks#top'
 
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+  
+  get 'search/search'
+  get '/search' => 'search#search'
+
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     registrations: 'customers/registrations',
