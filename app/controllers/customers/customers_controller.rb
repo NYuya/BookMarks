@@ -1,7 +1,11 @@
 class Customers::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
-    @bookmarks = @customer.bookmarks
+    if @customer == current_customer
+      @bookmarks = @customer.bookmarks
+    else
+      @bookmarks = @customer.bookmarks.where(is_bookmark_status: true )
+    end
     @newbookmark = Bookmark.new
 
     @folders = @customer.folders
