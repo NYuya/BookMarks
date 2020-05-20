@@ -1,0 +1,45 @@
+<tr>
+  <td>
+    <%= link_to bookmark.bookmark_url do %>
+    <iframe id="inline-frame" scrolling="no" src="<%= bookmark.bookmark_url %>" width="400px" height="150px" sandbox>
+    </iframe>
+    <%end%>
+  </td>
+  <!--
+              <td>
+                <%= attachment_image_tag bookmark, :bookmark_image, size: '200x150',format: "jpeg",fallback: "no_image.jpg" %>
+              </td> 
+          -->
+  <td>
+    <%= link_to bookmark.bookmark_name, bookmark.bookmark_url %>
+    <br>
+    <%= link_to bookmark.bookmark_url do %>
+    <img src="https://www.google.com/s2/favicons?domain=<%=bookmark.bookmark_url%>">
+    <%end%>
+    <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %>
+    <br>
+    <br>
+    <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
+  </td>
+  <td><%= bookmark.bookmark_description %></td>
+  <td>
+    <% if bookmark.is_bookmark_status == false %>
+    <span class="text-danger">非公開中</span>
+    <% else %>
+    <span class="text-success">公開中</span>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to "Show",bookmark_path(bookmark), class: "btn-sm btn-primary bookmark_#{bookmark.id}" %>
+    <br>
+    <br>
+    <% if bookmark.customer == current_customer %>
+    <%= link_to "Edit",edit_bookmark_path(bookmark), class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
+    <% end %>
+    <br>
+    <br>
+    <% if bookmark.customer == current_customer %>
+    <%= link_to "Destroy",bookmark, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_bookmark_#{bookmark.id}" %>
+    <% end %>
+  </td>
+</tr>
