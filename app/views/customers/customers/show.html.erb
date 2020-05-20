@@ -72,16 +72,8 @@
         </tr>
       </thead>
       <tbody>
-        <% if @customer_id == current_customer.id %>
         <% @bookmarks.each do |bookmark| %>
         <%= render "customer_bookmark_index", bookmark: bookmark %>
-        <% end %>
-        <% else @customer_id != current_customer.id %>
-        <% @bookmarks.each do |bookmark| %>
-        <% if bookmark.is_bookmark_status != false %>
-        <%= render "customer_bookmark_index", bookmark: bookmark %>
-        <% end %>
-        <% end %>
         <% end %>
       </tbody>
     </table>
