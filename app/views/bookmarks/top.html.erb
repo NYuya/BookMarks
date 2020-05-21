@@ -41,10 +41,12 @@
         </iframe>
       </td>
       <td>
-        <%= bookmark.bookmark_name %>
+        <%= link_to bookmark.bookmark_name, bookmark.bookmark_url %>
         <br>
-        <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %>
-        <br>
+        <%= link_to bookmark.bookmark_url do %>
+        <img src="https://www.google.com/s2/favicons?domain=<%=bookmark.bookmark_url%>">
+        <%end%>
+        <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %><br>
         <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
       </td>
       <td id="favorites_buttons_<%= bookmark.id %>">

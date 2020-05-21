@@ -36,31 +36,25 @@
           <span class="icon-bar"></span>
         </button>
         <span style="font-size:35px;"><%= link_to "BookMarks", root_path, id: "logo" %></span>
-        <% if customer_signed_in? %>
-        <div class="search-form">
-          <%= form_tag(search_path, method: :get) do %>
-          <%= text_field_tag 'search[content]' %>
-          <%= select_tag 'search[model]', options_for_select({"Bookmark" => "bookmark" ,"Customer" => "customer" }) %>
-          <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "部分一致" => "partical"  }) %>
-          <%= submit_tag '検索', class: "btn btn-primary" %>
-          <% end %>
-        </div>
-        <% end %>
       </div>
 
       <nav>
         <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
           <% if admin_signed_in? %>
-          <li><%= link_to ' ブックマーク一覧', admins_bookmarks_path %></li>
-          <li><%= link_to ' 顧客一覧', admins_customers_path %></li>
+          <li class="<%= 'active' if current_page?(admins_bookmarks_path) %>">
+            <%= link_to ' ブックマーク一覧', admins_bookmarks_path %></li>
+          <li class="<%= 'active' if current_page?(admins_customers_path) %>">
+            <%= link_to ' 顧客一覧', admins_customers_path %></li>
           <li><a rel="nofollow" href="/admins/sign_out">ログアウト</a></li>
           <% elsif customer_signed_in? %>
-          <li><%= link_to 'トップページ', root_path %></li>
-          <li><%= link_to 'Myブックマーク', customer_path(current_customer) %></li>
-          <li><%= link_to 'みんなのブックマーク', bookmarks_path(@bookmarks) %></li>
+          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to 'トップページ', root_path %></li>
+          <li class="<%= 'active' if current_page?(current_customer) %>">
+            <%= link_to 'Myブックマーク', customer_path(current_customer) %></li>
+          <li class="<%= 'active' if current_page?(bookmarks_path(@bookmarks)) %>">
+            <%= link_to 'みんなのブックマーク', bookmarks_path(@bookmarks) %></li>
           <li><a rel="nofollow" data-method="delete" href="/customers/sign_out">ログアウト</a></li>
           <% else %>
-          <li><%= link_to ' トップページ', root_path %></li>
+          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to ' トップページ', root_path %></li>
           <li><a href="/customers/sign_up">新規登録</a></li>
           <li><a href="/customers/sign_in">ログイン</a></li>
           <% end %>
@@ -84,7 +78,18 @@
 
 
   <footer>
-
+    <br>
+    <br>
+    <div class="container">
+      <div class="search-form">
+        <%= form_tag(search_path, method: :get) do %>
+        <%= text_field_tag 'search[content]' %>
+        <%= select_tag 'search[model]', options_for_select({"Bookmark" => "bookmark" ,"Customer" => "customer" }) %>
+        <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "部分一致" => "partical"  }) %>
+        <%= submit_tag '検索', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   </footer>
 
 </body>
