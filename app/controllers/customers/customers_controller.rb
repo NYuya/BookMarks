@@ -3,10 +3,20 @@ class Customers::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer == current_customer
       @bookmarks = @customer.bookmarks
+        respond_to do |format|
+          format.html do
+            #html用の処理を書く
+          end 
+          format.csv do
+            #csv用の処理を書く
+          end
+        end
     else
       @bookmarks = @customer.bookmarks.where(is_bookmark_status: true )
+      
     end
     @newbookmark = Bookmark.new
+
 
     @folders = @customer.folders
     @newfolder = Folder.new

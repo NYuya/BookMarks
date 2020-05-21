@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     put 'hide' => 'customers#hide'
   end
 
+
+
   scope module: :customers do
       resources :customers, only: [:show, :edit, :update]
   end
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resource :bookmark_comments, only: [:index, :edit, :destroy, :update, :create ]
     resource :genres, only: [:create, :update, :destroy]
+    collection {post :import}
   end
 
   resources :relationships, only: [:create, :destroy]

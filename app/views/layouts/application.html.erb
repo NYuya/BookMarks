@@ -47,11 +47,12 @@
             <%= link_to ' 顧客一覧', admins_customers_path %></li>
           <li><a rel="nofollow" href="/admins/sign_out">ログアウト</a></li>
           <% elsif customer_signed_in? %>
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to 'トップページ', root_path %></li>
-          <li class="<%= 'active' if current_page?(current_customer) %>">
+          <li class="<%= 'active' if current_page?(root_path) %>">
+            <%= link_to 'トップページ', root_path %></li>
+          <li class="<%= 'active' if current_page?(current_customer)%>">
             <%= link_to 'Myブックマーク', customer_path(current_customer) %></li>
-          <li class="<%= 'active' if current_page?(bookmarks_path(@bookmarks)) %>">
-            <%= link_to 'みんなのブックマーク', bookmarks_path(@bookmarks) %></li>
+          <li class="<%= 'active' if current_page?(bookmarks_path)%>">
+            <%= link_to 'みんなのブックマーク', bookmarks_path%></li>
           <li><a rel="nofollow" data-method="delete" href="/customers/sign_out">ログアウト</a></li>
           <% else %>
           <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to ' トップページ', root_path %></li>

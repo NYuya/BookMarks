@@ -11,6 +11,11 @@ class BookmarksController < ApplicationController
     @bookmark_comment = BookmarkComment.new
   end
 
+  def import
+    Bookmark.import(params[:file], current_customer)
+    redirect_to customer_path(current_customer)
+  end
+
   def index
     @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
     @newbookmark = Bookmark.new

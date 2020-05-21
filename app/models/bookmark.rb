@@ -18,6 +18,26 @@ class Bookmark < ApplicationRecord
   end
 
 
+# bookmarkインポートーーーーー↓
+	def self.import(file, current_customer)
+    CSV.foreach(file.path, headers: true) do |row|
+      # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
+      bookmark = find_by(id: row["id"]) || new
+      # CSVからデータを取得し、設定する
+			bookmark.attributes = row.to_hash.slice(*updatable_attributes)
+			bookmark.customer_id = current_customer.id
+			# 保存する
+      bookmark.save
+    end
+	end
+	
+  # 更新を許可するカラムを定義
+  def self.updatable_attributes
+    ["bookmark_name", "bookmark_url", "bookmark_description"]
+	end
+# bookmarkインポートーーーーー↑
+
+
 
 # bookmark_nameスクレイピングーーーーー↓
 
