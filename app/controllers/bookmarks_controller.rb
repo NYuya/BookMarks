@@ -1,9 +1,15 @@
 class BookmarksController < ApplicationController
+
   before_action :authenticate_customer!
 
   def top
     @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
 
+  end
+
+  def index
+    @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
+    @newbookmark = Bookmark.new
   end
 
   def show
@@ -14,11 +20,6 @@ class BookmarksController < ApplicationController
   def import
     Bookmark.import(params[:file], current_customer)
     redirect_to customer_path(current_customer)
-  end
-
-  def index
-    @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
-    @newbookmark = Bookmark.new
   end
 
   def create

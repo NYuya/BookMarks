@@ -45,7 +45,7 @@
             <%= link_to ' ブックマーク一覧', admins_bookmarks_path %></li>
           <li class="<%= 'active' if current_page?(admins_customers_path) %>">
             <%= link_to ' 顧客一覧', admins_customers_path %></li>
-          <li><a rel="nofollow" href="/admins/sign_out">ログアウト</a></li>
+          <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
           <% elsif customer_signed_in? %>
           <li class="<%= 'active' if current_page?(root_path) %>">
             <%= link_to 'トップページ', root_path %></li>
@@ -56,8 +56,9 @@
           <li><a rel="nofollow" data-method="delete" href="/customers/sign_out">ログアウト</a></li>
           <% else %>
           <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to ' トップページ', root_path %></li>
-          <li><a href="/customers/sign_up">新規登録</a></li>
-          <li><a href="/customers/sign_in">ログイン</a></li>
+          <li class="<%= 'active' if current_page?(new_customer_registration_path)%>"><a
+              href="/customers/sign_up">新規登録</a></li>
+          <li class="<%= 'active' if current_page?(customer_session_path)%>"><a href="/customers/sign_in">ログイン</a></li>
           <% end %>
         </ul>
       </nav>
@@ -79,7 +80,6 @@
 
 
   <footer>
-    <br>
     <br>
     <div class="container">
       <div class="search-form">

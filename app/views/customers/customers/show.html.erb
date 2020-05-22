@@ -1,7 +1,7 @@
 <h2></h2>
 
 <div class="row">
-  <div class="col-xs-3">
+  <div class="col-xs-2">
     <div class="row">
       <table class="table table-hover">
         <tr>
@@ -26,11 +26,11 @@
       </table>
       <%= render "relationships/follow_button", customer: @customer %>
 
-      <%= link_to 'プロフィール編集',edit_customer_path(@customer), class: "col-xs-8 col-xs-offset-2 text-center btn btn-default glyphicon glyphicon-wrench edit_user_#{@customer.id}" %>
+      <%= link_to 'プロフィール編集',edit_customer_path(@customer), class: "col-xs-9 col-xs-offset-1 text-center btn btn-default glyphicon glyphicon-wrench edit_user_#{@customer.id}" %>
     </div>
 
     <% if current_customer != @customer %>
-    <%= link_to 'chatを始める', chat_path(@customer.id)%>
+    <%= link_to 'chatを始める', chat_path(@customer.id), class: "btn btn-primary" %>
     <% end %>
 
     <div class="row">
@@ -39,7 +39,7 @@
       <div class="field row">
         <%= f.label :フォルダ新規作成 %>
         <%= f.text_field :folder_name, class: "col-xs-8 col-xs-offset-1 book_title" %>
-        <%= f.submit "登録", class: "btn btn-primary col-xs-2 text-center" %>
+        <%= f.submit "登録", class: "btn btn-primary col-xs-3 text-center" %>
       </div>
       <% end %>
     </div>
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <div class="col-xs-9">
+  <div class="col-xs-9 col-xs-offset-1">
     <h3>New bookMark</h3>
     <%= form_for(@newbookmark) do |f| %>
     <div class="field row">
