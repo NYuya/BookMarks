@@ -5,7 +5,7 @@
     <td><%= link_to folder.folder_name, folder_path(folder.id) %></td>
     <td><%=  %></td>
     <td>
-      <%= link_to "消去", folder_path(folder.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_folder_#{folder.id}" %>
+      <%= link_to "", folder_path(folder.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "delete-button far fa-times-circle color:red destroy_folder_#{folder.id}" %>
     </td>
   </tr>
   <% end %>

@@ -26,7 +26,7 @@
       </table>
       <%= render "relationships/follow_button", customer: @customer %>
 
-      <%= link_to 'プロフィール編集',edit_customer_path(@customer), class: "col-xs-9 col-xs-offset-1 text-center btn btn-default glyphicon glyphicon-wrench edit_user_#{@customer.id}" %>
+      <%= link_to 'プロフィール編集',edit_customer_path(@customer), class: "col-xs-9 col-xs-offset-1 text-center btn btn-default edit_user_#{@customer.id}" %>
     </div>
 
     <% if current_customer != @customer %>

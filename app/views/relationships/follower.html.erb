@@ -1,4 +1,4 @@
-<h2>Follow Users</h2>
+<h2>Follower Users</h2>
 <% if @customers.count > 0 %>
 <table class='table'>
   <thead>
@@ -19,9 +19,9 @@
       <td>
         <% if current_customer != customer %>
         <% if current_customer.following?(customer) %>
-        <%= link_to 'フォロー外す', customer_relationships_path(customer.id), method: :delete %>
+        <%= link_to 'フォロー外す', relationships_path(customer.id), method: :delete %>
         <% else %>
-        <%= link_to 'フォローする', customer_relationships_path(customer.id), method: :POST %>
+        <%= link_to 'フォローする', relationships_path(customer.id), method: :POST %>
         <% end %>
         <% end %>
       </td>

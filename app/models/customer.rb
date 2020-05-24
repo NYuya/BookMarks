@@ -17,8 +17,8 @@ class Customer < ApplicationRecord
 
   has_many :follower, class_name: "Relationship", foreign_key: "customer_id", dependent: :destroy # フォロー取得
   has_many :followed, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy # フォロワー取得
-  has_many :following_customer, through: :follower, source: :customer # 自分がフォローしている人
-  has_many :follower_customer, through: :followed, source: :follow # 自分をフォローしている人
+  has_many :following_customer, through: :follower, source: :follow # 自分がフォローしている人
+  has_many :follower_customer, through: :followed, source: :customer # 自分をフォローしている人
 
   has_many :customer_rooms
   has_many :chats
