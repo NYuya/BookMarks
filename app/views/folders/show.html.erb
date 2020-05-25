@@ -1,6 +1,8 @@
 <h2></h2>
 
 <div class="row">
+  <%= render "bookmarks/error_messages", bookmark: @newbookmark %>
+  <%= render "folders/error_messages", folder: @newfolder %>
   <div class="col-xs-3">
     <div class="row">
       <table class="table table-hover">

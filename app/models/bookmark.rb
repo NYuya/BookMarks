@@ -1,21 +1,22 @@
 class Bookmark < ApplicationRecord
 
-  belongs_to :customer
-  #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
-  #presence trueは空欄の場合を意味する。
-  
+	belongs_to :customer
+	belongs_to :folder, optional: true	#folderが指定されてなくてもブックマークできるようにするため
+
   has_many :bookmark_comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
-
-	# has_many :folder_bookmark_relations
-	belongs_to :folder, optional: true	#folderが指定されてなくてもブックマークできるようにするため
 	
 	attachment :bookmark_image
 
+	validates :bookmark_url, presence: true
 
-  def favorited_by?(customer)
-    favorites.where(customer_id: customer.id).exists?
-  end
+	
+
+	
+		def favorited_by?(customer)
+			favorites.where(customer_id: customer.id).exists?
+		end
+
 
 
 # bookmarkインポートーーーーー↓
@@ -65,29 +66,27 @@ class Bookmark < ApplicationRecord
 # bookmark_nameスクレイピングーーーーー↑
 
 # bookmark_imageスクレイピングーーーーー↓
+	# require 'open-uri'
+	# require 'nokogiri'
 
-	require 'open-uri'
-	require 'nokogiri'
+	# def get_thumbnail(url)
 
-	def get_thumbnail(url)
+	# 	charset = nil
+	# 	html = open(url) do |f|
+	# 		charset = f.charset # 文字種別を取得
+	# 		f.read # htmlを読み込んで変数htmlに渡す
+	# 	end
 
-		charset = nil
-		html = open(url) do |f|
-			charset = f.charset # 文字種別を取得
-			f.read # htmlを読み込んで変数htmlに渡す
-		end
-
-		# htmlをパース(解析)してオブジェクトを生成
-		doc = Nokogiri::HTML.parse(html, nil, charset)
+	# 	# htmlをパース(解析)してオブジェクトを生成
+	# 	doc = Nokogiri::HTML.parse(html, nil, charset)
 		
-		doc.xpath('//li[@class="BookMark-thumbnail"]').each do |node|
+	# 	doc.xpath('//li[@class="BookMark-thumbnail"]').each do |node|
 
-		p node.css('img').attribute('src').value	# サムネイル画像
-		p node.css('a').attribute('href').value	# サムネイル画像
+	# 	p node.css('img').attribute('src').value	# サムネイル画像
+	# 	p node.css('a').attribute('href').value	# サムネイル画像
 		
-		end
-
-	end
+	# 	end
+	# end
 # bookmark_imageスクレイピングーーーーー↑
 
 end

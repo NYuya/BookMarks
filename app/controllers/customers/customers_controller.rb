@@ -1,4 +1,7 @@
 class Customers::CustomersController < ApplicationController
+  before_action :authenticate_customer!, except:[:top, :index ]
+  before_action :baria_customer, only: [:edit, :update]
+
   def show
     @customer = Customer.find(params[:id])
     if @customer == current_customer

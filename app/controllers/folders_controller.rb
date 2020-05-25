@@ -19,10 +19,10 @@ class FoldersController < ApplicationController
   	@newfolder.customer_id = current_customer.id
     @customer = current_customer
     if @newfolder.save #入力されたデータをdbに保存する。
-      redirect_to customer_path(@customer.id), notice: "successfully created folder!"#保存された場合の移動先を指定。
+      redirect_to customer_path(@customer.id), noticefolder: "successfully created folder!"#保存された場合の移動先を指定。
     else
       @folders = Folder.all
-      render 'index'
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -30,7 +30,7 @@ class FoldersController < ApplicationController
   def update
     @folder = Folder.find(params[:id])
     if @folder.update(folder_params)
-      redirect_to customer_path(@customer.id), notice: "successfully updated folder!"
+      redirect_to customer_path(@customer.id), noticefolder: "successfully updated folder!"
     else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
       render "edit"
     end
@@ -40,7 +40,7 @@ class FoldersController < ApplicationController
     @folder = Folder.find(params[:id])
     @folder.destroy
     @customer = current_customer
-    redirect_to customer_path(@customer.id), notice: "successfully delete folder!"
+    redirect_to customer_path(@customer.id), noticefolder: "successfully delete folder!"
   end
 
 

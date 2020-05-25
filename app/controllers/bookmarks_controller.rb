@@ -1,10 +1,11 @@
 class BookmarksController < ApplicationController
 
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except:[:top, :index, :show]
+
 
   def top
     @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
-
+  
   end
 
   def index
@@ -54,7 +55,7 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.update(bookmark_params)
-      redirect_to @bookmark, notice: "successfully updated book!"
+      redirect_to @bookmark, notice: "successfully updated bookmark!"
     else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
       render "edit"
     end
@@ -64,7 +65,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
     @customer = current_customer
     @bookmark.destroy
-    redirect_to @customer, notice: "successfully delete book!"
+    redirect_to @customer, notice: "successfully delete bookmark!"
   end
 
 
