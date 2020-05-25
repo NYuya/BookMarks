@@ -23,3 +23,15 @@ $(document).on('turbolinks:load', function () {
   });
 
 });
+
+
+$(function () {
+
+  $('#back a').on('click', function () {
+    $('body, html').animate({
+      scrollTop: 500
+    }, 800);
+    return false;
+  });
+
+});

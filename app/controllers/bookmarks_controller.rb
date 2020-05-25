@@ -2,7 +2,6 @@ class BookmarksController < ApplicationController
 
   before_action :authenticate_customer!, except:[:top, :index, :show]
 
-
   def top
     @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
   

@@ -59,7 +59,6 @@
           <li><a rel="nofollow" data-method="delete" href="/customers/sign_out">Sign out</a></li>
           <% else %>
           <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to ' Top', root_path %></li>
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to ' about', root_path %></li>
           <li class="<%= 'active' if current_page?(bookmarks_path)%>">
             <%= link_to "Everyone's", bookmarks_path%></li>
           <li class="<%= 'active' if current_page?(new_customer_registration_path)%>"><a href="/customers/sign_up">Sign
@@ -78,10 +77,9 @@
     <br>
     <br>
     <div class="container">
-
-
       <%= yield %>
     </div>
+    <span id="back"><a href="#"> about</a></span>
   </main>
 
 
