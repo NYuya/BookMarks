@@ -65,13 +65,13 @@
     <table class="table">
       <tr>
         <th>CSV エクスポート</th>
-        <th><%= link_to "CSV", customer_path(format: :csv), class: "btn btn-primary" %></th>
+        <th><%= link_to "CSV", customer_path(id: current_customer.id, format: :csv), class: "btn btn-primary" %></th>
       </tr>
       <tr>
         <th>CSV インポート</th>
         <th>
           <%= form_tag import_bookmarks_path, multipart: true do %>
-          <%= file_field_tag :file %>
+          <%= file_field_tag :file, accept:"text/csv" %>
           <%= submit_tag "インポート", class: "btn btn-primary" %>
           <% end %>
         </th>
@@ -92,7 +92,7 @@
       </thead>
       <tbody>
         <% @bookmarks.each do |bookmark| %>
-        <%= render "customer_bookmark_index", bookmark: bookmark %>
+        <%= render "customers/customers/customer_bookmark_index", bookmark: bookmark %>
         <% end %>
       </tbody>
     </table>

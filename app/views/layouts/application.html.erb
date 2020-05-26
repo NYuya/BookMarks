@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body role="document" id="top">
   <header class="navbar navbar-fixed-top ">
     <!-- navbar-inverse -->
     <div class="container">
@@ -79,6 +79,10 @@
     <div class="container">
       <%= yield %>
     </div>
+    <div class="row">
+      <span class="pull-right" id="back"><a href="#" style="font-size:40px; color:white;"><i
+            class="fas fa-chevron-circle-up"></i></a></span>
+    </div>
   </main>
 
 
@@ -93,16 +97,13 @@
           <%= form_tag(search_path, method: :get) do %>
           <%= text_field_tag 'search[content]' %>
           <%= select_tag 'search[model]', options_for_select({"Bookmark" => "bookmark" ,"Customer" => "customer" }) %>
-          <%= select_tag 'search[how]', options_for_select({ "部分一致" => "partical"}) %>
+          <%= select_tag 'search[how]', options_for_select({ "部分一致" => "partical", "完全一致" => "match"}) %>
           <%= submit_tag '検索', class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
 
-      <div class="row">
-        <span class="pull-right" id="back"><a href="#" style="font-size:40px; color:white;"><i
-              class="fas fa-chevron-circle-up"></i></a></span>
-      </div>
+
 
       <div class="row">
 

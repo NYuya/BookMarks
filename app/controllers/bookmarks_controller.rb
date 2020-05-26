@@ -18,38 +18,41 @@ class BookmarksController < ApplicationController
   end
 
   def import
+    if params[:file].nil?
+      redirect_to  customer_path(current_customer)
+    else
     Bookmark.import(params[:file], current_customer)
     redirect_to customer_path(current_customer)
+    end
   end
 
   def create
     @newbookmark = Bookmark.new(bookmark_params) #Bookmarkモデルのテーブルを使用しているのでbookmarkコントローラで保存する。
 
-    if params[:bookmark][:bookmark_url].blank?
-      # @bookmarks = Bookmark.all
-      @customer = Customer.find(current_customer.id)
-      @folders = @customer.folders
-      @newfolder = Folder.new
-      # @newbookmark.valid?
-      @bookmarks = @customer.bookmarks
-        respond_to do |format|
-          format.html do
-            #html用の処理を書く
-          end 
-          format.csv do
-            #csv用の処理を書く
-          end
-        end
+    # if params[:bookmark][:bookmark_url].blank?
+    #   # @bookmarks = Bookmark.all
+    #   @customer = Customer.find(current_customer.id)
+    #   @folders = @customer.folders
+    #   @newfolder = Folder.new
+    #   # @newbookmark.valid?
+    #   @bookmarks = @customer.bookmarks
+    #     respond_to do |format|
+    #       format.html do
+    #         #html用の処理を書く
+    #       end 
+    #       format.csv do
+    #         #csv用の処理を書く
+    #       end
+    #     end
       
-      @newbookmark.save
-      render 'customers/customers/show'
-      return
+    #   @newbookmark.save
+    #   render 'customers/customers/show'
+    #   return
+    # end
+    if params[:bookmark][:bookmark_url].length != 0
+      @tittle = @newbookmark.get_tittle(params[:bookmark][:bookmark_url]) #スクレイピング「タイトル」
+      @newbookmark.bookmark_name = @tittle
     end
-
-
-    @tittle = @newbookmark.get_tittle(params[:bookmark][:bookmark_url]) #スクレイピング「タイトル」
-    @newbookmark.bookmark_name = @tittle
-
     # @thumbnail = @newbookmark.get_thumbnail(params[:bookmark][:bookmark_url]) #スクレイピング「サムネ画像」
     # @newbookmark.bookmark_image = @thumbnail
     
@@ -61,8 +64,10 @@ class BookmarksController < ApplicationController
       @newbookmark.errors.full_messages.each do |msg|
         p msg
       end
-      @bookmarks = Bookmark.all
-      render 'index'
+      @folders = @customer.folders
+      @newfolder = Folder.new
+      @bookmarks = current_customer.bookmarks
+      render 'customers/customers/show'
     end
   end
 
