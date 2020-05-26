@@ -79,7 +79,6 @@
     <div class="container">
       <%= yield %>
     </div>
-    <span id="back"><a href="#"> about</a></span>
   </main>
 
 
@@ -94,10 +93,15 @@
           <%= form_tag(search_path, method: :get) do %>
           <%= text_field_tag 'search[content]' %>
           <%= select_tag 'search[model]', options_for_select({"Bookmark" => "bookmark" ,"Customer" => "customer" }) %>
-          <%= select_tag 'search[how]', options_for_select({ "部分一致" => "partical", "完全一致" => "match"  }) %>
+          <%= select_tag 'search[how]', options_for_select({ "部分一致" => "partical"}) %>
           <%= submit_tag '検索', class: "btn btn-primary" %>
           <% end %>
         </div>
+      </div>
+
+      <div class="row">
+        <span class="pull-right" id="back"><a href="#" style="font-size:40px; color:white;"><i
+              class="fas fa-chevron-circle-up"></i></a></span>
       </div>
 
       <div class="row">
@@ -106,39 +110,33 @@
           <div class="footer-text-headline">About Us</div>
           <div class="footer-text"><%= link_to 'Top', root_path, class: "footer-text"%></div>
           <div class="footer-text"><%= link_to 'Top', root_path, class: "footer-text"%></div>
-
-
         </div>
+
+        <div class="col-xs-2">
+          <div class="footer-text-headline">Products</div>
+        </div>
+
+        <div class="col-xs-2">
+          <div class="footer-text-headline">Service</div>
+        </div>
+
+        <div class="col-xs-2">
+          <div class="footer-text-headline">Support</div>
+        </div>
+
+        <div class="col-xs-2">
+          <div class="footer-text-headline">Learn</div>
+        </div>
+
+        <div class="col-xs-2">
+          <div class="footer-text-headline">Community</div>
+          <a href="https://twitter.com/Yuya43492396" style="font-size:25px; color:white;"><i
+              class="fab fa-twitter-square"></i></a>
+          <a href="https://github.com/NYuya/BookMarks" style="font-size:25px; color:white;"><i
+              class="fab fa-github-square"></i></a>
+        </div>
+
       </div>
-
-
-      <div class="col-xs-2">
-        <div class="footer-text-headline">Products</div>
-      </div>
-
-      <div class="col-xs-2">
-        <div class="footer-text-headline">Service</div>
-      </div>
-
-      <div class="col-xs-2">
-        <div class="footer-text-headline">Support</div>
-      </div>
-
-      <div class="col-xs-2">
-        <div class="footer-text-headline">Learn</div>
-      </div>
-
-      <div class="col-xs-2">
-        <div class="footer-text-headline">Community</div>
-        <i class="fab fa-twitter-square"></i>
-        <i class="fab fa-github-square"></i>
-
-
-      </div>
-
-
-
-    </div>
 
     </div>
 

@@ -120,7 +120,7 @@ header {
     float: left;
     position: fixed;
     top: 0;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.89);
     box-shadow: 0 0 5px hsla(180, 67%, 37%, 0.3);
     left: 0;
     transition: 500ms;
@@ -247,6 +247,7 @@ header {
 //     list-style-type: none;
 //     outline: none;
 // }
+
 
 
 

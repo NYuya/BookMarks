@@ -9,8 +9,21 @@
 
 
 .topvisual {
-  width: 100%;
-  height: 600px;
-  background-image: image-url("img1.png");
+  background-image: image-url("img2.png");
   background-size: cover;
+  height: 530px;
+}
+
+.topvisual-text {
+  color: rgb(250, 250, 250);
+}
+
+div.topvisual-text {
+  margin: 100px 0px 0px 0px;
+  font-family: 'Roboto, sans-serif';
+}
+
+p.topvisual-text {
+  margin: 40px 0px 0px 0px;
+  font-size: 20px;
 }
