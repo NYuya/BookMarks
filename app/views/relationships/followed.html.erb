@@ -16,15 +16,6 @@
       <td><%= customer.customer_name %></td>
       <td>フォロー数：<%= customer.follower.count %></td>
       <td>フォロワー数：<%= customer.followed.count %></td>
-      <td>
-        <% if current_customer != customer %>
-        <% if current_customer.following?(customer) %>
-        <%= link_to 'フォロー外す', relationships_path(customer.id), method: :delete %>
-        <% else %>
-        <%= link_to 'フォローする', relationships_path(customer.id), method: :POST %>
-        <% end %>
-        <% end %>
-      </td>
       <td><%= link_to 'Show', customer, class: "customer_#{customer.id}" %></td>
     </tr>
     <% end %>
