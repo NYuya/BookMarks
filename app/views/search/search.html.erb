@@ -1,44 +1,43 @@
 <table class="table">
   <% if @model == 'customer' %>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th>follows</th>
-      <th>followers</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <% @datas.each do |customer| %>
-  <tr>
-    <td><%= attachment_image_tag(customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-    <td><%= customer.customer_name %></td>
-    <td><%= customer.followed.count %></td>
-    <td><%= customer.follower.count %></td>
-    <td><%= link_to 'Show', customer %></td>
-  </tr>
-  <% end %>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th>follows</th>
+        <th>followers</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <% @datas.each do |customer| %>
+      <tr>
+        <td><%= attachment_image_tag(customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+        <td><%= customer.customer_name %></td>
+        <td><%= customer.followed.count %></td>
+        <td><%= customer.follower.count %></td>
+        <td><%= link_to 'Show', customer %></td>
+      </tr>
+    <% end %>
   <% else %>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <% @datas.each do |bookmark| %>
-  <tr>
-    <td>
-      <%= link_to(bookmark.customer) do %>
-      <%= attachment_image_tag(bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
-      <% end %>
-    </td>
-    <td><%= bookmark.bookmark_name %></td>
-    <td><%= bookmark.bookmark_description %></td>
-    <td><%= link_to 'Show', bookmark_path(bookmark.id) %></td>
-  </tr>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <% @datas.each do |bookmark| %>
+      <tr>
+        <td>
+          <%= link_to(bookmark.customer) do %>
+            <%= attachment_image_tag(bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+          <% end %>
+        </td>
+        <td><%= bookmark.bookmark_name %></td>
+        <td><%= bookmark.bookmark_description %></td>
+        <td><%= link_to 'Show', bookmark_path(bookmark.id) %></td>
+      </tr>
+    <% end %>
   <% end %>
-  <% end %>
-
 </table>

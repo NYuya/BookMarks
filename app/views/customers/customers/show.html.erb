@@ -1,5 +1,3 @@
-<h2></h2>
-
 <div class="row">
   <%= render "bookmarks/error_messages", bookmark: @newbookmark %>
   <%= render "folders/error_messages", folder: @newfolder %>
@@ -26,23 +24,23 @@
           <th><%= link_to @customer.followed.count , follower_path(@customer.id) %></th>
         </tr>
       </table>
-      <%= render "relationships/follow_button", customer: @customer %>
+      <%= render "relationships/follow_button", customer: @customer %><br>
 
       <%= link_to 'プロフィール編集',edit_customer_path(@customer), class: "col-xs-9 col-xs-offset-1 text-center btn btn-default edit_user_#{@customer.id}" %>
-    </div>
+    </div><br>
 
     <% if current_customer != @customer %>
-    <%= link_to 'chatを始める', chat_path(@customer.id), class: "btn btn-primary" %>
+      <%= link_to 'chatを始める', chat_path(@customer.id), class: "btn btn-primary" %>
     <% end %>
 
     <div class="row">
       <h4>New Folder</h4>
       <%= form_for @newfolder do |f| %>
-      <div class="field row">
-        <%= f.label :フォルダ新規作成 %>
-        <%= f.text_field :folder_name, class: "col-xs-8 col-xs-offset-1 book_title" %>
-        <%= f.submit "登録", class: "btn btn-primary col-xs-3 text-center" %>
-      </div>
+        <div class="field row">
+          <%= f.label :フォルダ新規作成 %>
+          <%= f.text_field :folder_name, class: "col-xs-8 col-xs-offset-1 book_title" %>
+          <%= f.submit "登録", class: "btn btn-primary col-xs-3 text-center" %>
+        </div>
       <% end %>
     </div>
 
@@ -54,13 +52,12 @@
   <div class="col-xs-9 col-xs-offset-1">
     <h3>New bookMark</h3>
     <%= form_for(@newbookmark) do |f| %>
-    <div class="field row">
-      <%= f.label :ブックマークするページのURLを入力してください %>
-      <%= f.text_field :bookmark_url, class: "col-xs-10 book_title" %>
-      <%= f.submit "登録", class: "btn btn-primary col-xs-2 text-center" %>
-    </div>
+      <div class="field row">
+        <%= f.label :ブックマークするページのURLを入力してください %>
+        <%= f.text_field :bookmark_url, class: "col-xs-10 book_title" %>
+        <%= f.submit "登録", class: "btn btn-primary col-xs-2 text-center" %>
+      </div>
     <% end %>
-
 
     <table class="table">
       <tr>
@@ -71,38 +68,31 @@
         <th>CSV インポート</th>
         <th>
           <%= form_tag import_bookmarks_path, multipart: true do %>
-          <%= file_field_tag :file, accept:"text/csv" %>
-          <%= submit_tag "インポート", class: "btn btn-primary" %>
+            <%= file_field_tag :file, accept:"text/csv" %>
+            <%= submit_tag "インポート", class: "btn btn-primary" %>
           <% end %>
-
-          CSVインポートする<a href="https://drive.google.com/file/d/1BJwpcvAFFkGp2EL4tyLZowgnTIHllFC8/view?usp=sharing"
-            style="font-size:18px; ">テンプレートデータはこちら</a>です。
+          CSVインポートする<a href="https://drive.google.com/file/d/1BJwpcvAFFkGp2EL4tyLZowgnTIHllFC8/view?usp=sharing" style="font-size:18px; ">テンプレートデータはこちら</a>です。
         </th>
       </tr>
     </table>
 
     <h3>BookMarks</h3>
-    <p id="notice"><span style="color: hsla(180, 67%, 37%, 1);"><%= flash[:notice] %></span></p>
-    <table class="table table-hover table-inverse">
-      <thead>
-        <tr>
-          <th>サイト画面</th>
-          <%# <th>サムネイル画像</th> %>
-          <th>Title/URL</th>
-          <th>Opinion</th>
-          <th colspan="3">公開状況</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @bookmarks.each do |bookmark| %>
-        <%= render "customers/customers/customer_bookmark_index", bookmark: bookmark %>
-        <% end %>
-      </tbody>
-    </table>
-
-
-
+      <p id="notice"><span style="color: hsla(180, 67%, 37%, 1);"><%= flash[:notice] %></span></p>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>サイト画面</th>
+            <%# <th>サムネイル画像</th> %>
+            <th>Title/URL</th>
+            <th>Opinion</th>
+            <th colspan="3">公開状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookmarks.each do |bookmark| %>
+            <%= render "customers/customers/customer_bookmark_index", bookmark: bookmark %>
+          <% end %>
+        </tbody>
+      </table>
   </div>
-
-
 </div>

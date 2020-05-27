@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  
   def show
     @customer = Customer.find(params[:id])
     rooms = current_customer.customer_rooms.pluck(:room_id)

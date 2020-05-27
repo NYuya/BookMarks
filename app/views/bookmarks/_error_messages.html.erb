@@ -1,12 +1,12 @@
 <% if bookmark.errors.any? %>
-<div id="error_explanation">
-  <font color="red">
-    <h2><%= pluralize(bookmark.errors.count, "error") %> prohibited this bookmark from being saved:</h2>
-    <ul>
-      <% bookmark.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </font>
-</div>
+	<div id="error_explanation">
+	  <font color="red">
+	    <h2><%= pluralize(bookmark.errors.count, "error") %> prohibited this bookmark from being saved:</h2>
+		    <ul>
+		      <% bookmark.errors.full_messages.each do |message| %>
+		      	<li><%= message %></li>
+		      <% end %>
+		    </ul>
+	  </font>
+	</div>
 <% end %>

@@ -1,38 +1,38 @@
 <%= form_for(@bookmark) do |f| %>
-<table class="table table-borderless">
-	<tr>
-		<th><%= f.label :サイト名 %></th>
-		<td><%= f.text_field :bookmark_name, class: "col-xs-12 book_title" %></td>
-	</tr>
-	<tr>
-		<th><%= f.label :詳細文 %></th>
-		<td><%= f.text_area :bookmark_description, class: "col-xs-12 book_body" %></td>
-	</tr>
-	<tr>
-		<th><%= f.label :フォルダ %></th>
-		<td><%= f.collection_select :folder_id, @folders, :id, :folder_name %></td>
-	</tr>
-	<tr>
-		<th>アイコン</th>
-		<td>
-			<label><%= f.label :bookmark_image, "画像選択", class: "bookmark_image_input_btn btn-primary" %></label>
-			<label><%= f.attachment_field :bookmark_image, class: "image_form" %></label>
-		</td>
-	</tr>
-	<tr>
-		<th>公開状況</th>
-		<td>
-			<label><%= f.radio_button :is_bookmark_status, "false" %>非公開</label>
-			<label><%= f.radio_button :is_bookmark_status, "ture" %>公開</label>
-		</td>
-	</tr>
+	<table class="table table-borderless">
+		<tr>
+			<th><%= f.label :サイト名 %></th>
+			<td><%= f.text_field :bookmark_name, class: "col-xs-12 book_title" %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :詳細文 %></th>
+			<td><%= f.text_area :bookmark_description, class: "col-xs-12 book_body" %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :フォルダ %></th>
+			<td><%= f.collection_select :folder_id, @folders, :id, :folder_name %></td>
+		</tr>
+		<tr>
+			<th>アイコン</th>
+			<td>
+				<label><%= f.label :bookmark_image, "画像選択", class: "bookmark_image_input_btn btn-primary" %></label>
+				<label><%= f.attachment_field :bookmark_image, class: "image_form" %></label>
+			</td>
+		</tr>
+		<tr>
+			<th>公開状況</th>
+			<td>
+				<label><%= f.radio_button :is_bookmark_status, "false" %>非公開</label>
+				<label><%= f.radio_button :is_bookmark_status, "ture" %>公開</label>
+			</td>
+		</tr>
 
-	<tr>
-		<th></th>
-		<td><%= f.submit class: "btn btn-primary col-xs-12" %></td>
-	</tr>
+		<tr>
+			<th></th>
+			<td><%= f.submit class: "btn btn-primary col-xs-12" %></td>
+		</tr>
 
-</table>
+	</table>
 <% end %>
 
 <%= link_to "Show", @bookmark, class: "bookmark_#{@bookmark.id}" %>

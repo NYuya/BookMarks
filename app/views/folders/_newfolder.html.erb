@@ -1,8 +1,8 @@
 <h4>New Folder</h4>
 <%= form_for @newfolder do |f| %>
-<div class="field row">
-  <%= f.label :フォルダ新規作成 %>
-  <%= f.text_field :folder_name, class: "col-xs-8 col-xs-offset-1 book_title" %>
-  <%= f.submit "登録", class: "btn btn-primary col-xs-2 text-center" %>
-</div>
+	<div class="field row">
+	  <%= f.label :フォルダ新規作成 %>
+	  <%= f.text_field :folder_name, class: "col-xs-8 col-xs-offset-1 book_title" %>
+	  <%= f.submit "登録", class: "btn btn-primary col-xs-2 text-center" %>
+	</div>
 <% end %>

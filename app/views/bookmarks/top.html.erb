@@ -15,8 +15,8 @@
       <div id="sampleScrollSpy">
         <div class="collapse navbar-collapse pull-right" id="sampleNavbar">
           <ul class="nav navbar-nav">
-            <li><a class="linkInThePage" href="#page1"
-                style="font-family: 'Roboto, sans-serif'; font-size:20px; color:white;">about</a>
+            <li>
+              <a class="linkInThePage" href="#page1" style="font-family: 'Roboto, sans-serif'; font-size:20px; color:white;">about</a>
             </li>
           </ul>
         </div>
@@ -31,52 +31,52 @@
 <h2 style="font-family: 'Roboto, sans-serif';">Favorite BookMarks</h2>
 <!--books一覧 -->
 <table class="table table-hover table-inverse">
-  <thead></thead>
-  <tr>
-    <th>ユーザー</th>
-    <th>サイト画面</th>
-    <th>サイトURL</th>
-    <th>いいね</th>
-    <th>詳細</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>ユーザー</th>
+      <th>サイト画面</th>
+      <th>サイトURL</th>
+      <th>いいね</th>
+      <th>詳細</th>
+    </tr>
   </thead>
   <tbody>
     <% @bookmarks.each do |bookmark| %>
-    <% if bookmark.is_bookmark_status != false %>
-    <tr>
-      <td>
-        <%= link_to (bookmark.customer) do %>
-        <%= attachment_image_tag(bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
-        <br><%= bookmark.customer.customer_name %>
-        <% end %>
-      </td>
-      <td>
-        <iframe id="inline-frame" scrolling="no" src="<%= bookmark.bookmark_url %>" width="300px" height="100px"
-          scrolling=”auto” sandbox>
-        </iframe>
-      </td>
-      <td>
-        <%= link_to bookmark.bookmark_name, bookmark.bookmark_url %>
-        <br>
-        <%= link_to bookmark.bookmark_url do %>
-        <img src="https://www.google.com/s2/favicons?domain=<%=bookmark.bookmark_url%>">
-        <%end%>
-        <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %><br>
-        <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
-      </td>
-      <td id="favorites_buttons_<%= bookmark.id %>">
-        <%= render partial: 'favorites/favorite', locals: { bookmark: bookmark} %>
-      </td>
-      <td>
-        <div class="comment-list bt style-2" id="comments">
-          <div class="float-wrapper">
-            <h4 class="comment-count"><%= bookmark.bookmark_comments.count %>件コメント</h4>
-          </div>
-        </div>
-        <%= link_to "詳細ページへ",bookmark_path(bookmark), class: "btn-sm btn-primary edit_bookmark_#{bookmark.id}" %>
-      </td>
-    </tr>
-    <% end %>
+      <% if bookmark.is_bookmark_status != false %>
+        <tr>
+          <td>
+            <%= link_to (bookmark.customer) do %>
+              <%= attachment_image_tag(bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+              <br><%= bookmark.customer.customer_name %>
+            <% end %>
+          </td>
+          <td>
+            <iframe id="inline-frame" scrolling="no" src="<%= bookmark.bookmark_url %>" width="300px" height="100px"
+              scrolling=”auto” sandbox>
+            </iframe>
+          </td>
+          <td>
+            <%= link_to bookmark.bookmark_name, bookmark.bookmark_url %>
+            <br>
+            <%= link_to bookmark.bookmark_url do %>
+              <img src="https://www.google.com/s2/favicons?domain=<%=bookmark.bookmark_url%>">
+            <%end%>
+            <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %><br>
+            <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
+          </td>
+          <td id="favorites_buttons_<%= bookmark.id %>">
+            <%= render partial: 'favorites/favorite', locals: { bookmark: bookmark} %>
+          </td>
+          <td>
+            <div class="comment-list bt style-2" id="comments">
+              <div class="float-wrapper">
+                <h4 class="comment-count"><%= bookmark.bookmark_comments.count %>件コメント</h4>
+              </div>
+            </div>
+            <%= link_to "詳細ページへ",bookmark_path(bookmark), class: "btn-sm btn-primary edit_bookmark_#{bookmark.id}" %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
@@ -114,7 +114,6 @@
         <p class="tophowto1 text-center">・登録したブックマークを任意のフォルダに入れる</p>
         <p class="tophowto1 text-center">・登録しているブックマークをCSVで取り出す（エクスポート）</p>
         <p class="tophowto1 text-center">・登録したいブックマークをCSVでまとめて入力（インポート）</p>
-        </p>
       </div>
     </div>
 
@@ -151,7 +150,6 @@
           CSVインポートする
           <a href="https://drive.google.com/file/d/1BJwpcvAFFkGp2EL4tyLZowgnTIHllFC8/view?usp=sharing"
             style="font-size:20px; ">テンプレートデータはこちら</a>です。
-
         </p>
       </div>
       <div class="col-xs-6 col-xs-offset-0">
@@ -171,15 +169,13 @@
         <p class="tophowto text-center">・作成されるとFolder indexに表示されます。</p>
         <p class="tophowto text-center">・登録したブックマークのeditページからフォルダを選択します。</p>
         <p class="tophowto text-center">・Folder indexのフォルダをクリックするとソートされます。</p>
-        </p>
       </div>
     </div>
 
     <br><br>
 
     <div class="row">
-      <span class="pull-right" id="back"><a href="#" style="font-size:40px; "><i
-            class="fas fa-chevron-circle-up"></i></a></span>
+      <span class="pull-right" id="back"><a href="#" style="font-size:40px; "><i class="fas fa-chevron-circle-up"></i></a></span>
     </div>
   </div>
 </div>
@@ -200,3 +196,5 @@
 <%# <script src="assets/javascripts/jquery.min.js"></script>
 <script src="assets/javascripts/skippr.min.js"></script>
 <script src="assets/javascripts/script.js"></script> %>
+
+

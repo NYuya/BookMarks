@@ -5,7 +5,6 @@ class FoldersController < ApplicationController
     @newfolder = Folder.new
     @bookmarks = @folder.bookmarks
     @newbookmark = Bookmark.new
-
     @customer = @folder.customer
     @folders = current_customer.folders
   end

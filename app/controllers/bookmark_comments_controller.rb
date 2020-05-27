@@ -23,8 +23,6 @@ class BookmarkCommentsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-
-
   private
   def bookmark_comment_params
       params.require(:bookmark_comment).permit(:bookmark_comment)

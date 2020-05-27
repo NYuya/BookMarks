@@ -1,18 +1,18 @@
 <% if current_customer.blank? %>
-<%= link_to bookmark_favorites_path(bookmark.id), method: :post, remote: true do %>
-<i class="fa fa-heart" aria-hidden="true"></i>
-<%= bookmark.favorites.count %>
-<% end %>
+	<%= link_to bookmark_favorites_path(bookmark.id), method: :post, remote: true do %>
+		<i class="fa fa-heart" aria-hidden="true"></i>
+		<%= bookmark.favorites.count %>
+	<% end %>
 <% else %>
-<% if bookmark.favorited_by?(current_customer) %>
-<%= link_to bookmark_favorites_path(bookmark.id), method: :delete, remote: true do %>
-<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-<%= bookmark.favorites.count %>
-<% end %>
-<% else %>
-<%= link_to bookmark_favorites_path(bookmark.id), method: :post, remote: true do %>
-<i class="fa fa-heart" aria-hidden="true"></i>
-<%= bookmark.favorites.count %>
-<% end %>
-<% end %>
+	<% if bookmark.favorited_by?(current_customer) %>
+		<%= link_to bookmark_favorites_path(bookmark.id), method: :delete, remote: true do %>
+			<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+			<%= bookmark.favorites.count %>
+		<% end %>
+	<% else %>
+		<%= link_to bookmark_favorites_path(bookmark.id), method: :post, remote: true do %>
+			<i class="fa fa-heart" aria-hidden="true"></i>
+			<%= bookmark.favorites.count %>
+		<% end %>
+	<% end %>
 <% end %>

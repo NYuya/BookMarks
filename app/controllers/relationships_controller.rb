@@ -1,6 +1,5 @@
 class RelationshipsController < ApplicationController
 
-
   def followed
     @customer = Customer.find(params[:id])
     @customers = @customer.following_customer

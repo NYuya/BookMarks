@@ -4,5 +4,4 @@ class FolderBookmark < ApplicationRecord
   belongs_to :folder
   belongs_to :bookmark
 
-
 end

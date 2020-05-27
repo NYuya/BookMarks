@@ -4,7 +4,6 @@ class BookmarksController < ApplicationController
 
   def top
     @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
-  
   end
 
   def index
@@ -21,24 +20,13 @@ class BookmarksController < ApplicationController
     if params[:file].nil?
       redirect_to  customer_path(current_customer)
     else
-    Bookmark.import(params[:file], current_customer)
-    redirect_to customer_path(current_customer)
+      Bookmark.import(params[:file], current_customer)
+      redirect_to customer_path(current_customer)
     end
   end
 
   def create
-    @newbookmark = Bookmark.new(bookmark_params) #Bookmarkモデルのテーブルを使用しているのでbookmarkコントローラで保存する。
-
-    # if params[:bookmark][:bookmark_url].length != 0
-
-      # @tittle = @newbookmark.get_tittle(params[:bookmark][:bookmark_url]) #スクレイピング「タイトル」
-      # @newbookmark.bookmark_name = @tittle
-
-    # end
-
-    # @thumbnail = @newbookmark.get_thumbnail(params[:bookmark][:bookmark_url]) #スクレイピング「サムネ画像」
-    # @newbookmark.bookmark_image = @thumbnail
-    
+    @newbookmark = Bookmark.new(bookmark_params) #Bookmarkモデルのテーブルを使用しているのでbookmarkコントローラで保存する。    
     @newbookmark.customer_id = current_customer.id
     @customer = current_customer
     if @newbookmark.save #入力されたデータをdbに保存する。
@@ -57,9 +45,7 @@ class BookmarksController < ApplicationController
   def edit
     @bookmark = Bookmark.find(params[:id])
     @folders = current_customer.folders
-
   end
-
 
   def update
     @bookmark = Bookmark.find(params[:id])
@@ -77,13 +63,9 @@ class BookmarksController < ApplicationController
     redirect_to @customer, notice: "successfully delete bookmark!"
   end
 
-
-
   private
   def bookmark_params
     params.require(:bookmark).permit(:customer_id, :bookmark_name, :bookmark_url, :bookmark_description, :genre_id, :folder_id, :bookmark_image, :is_bookmark_status, :bookmark_screenshot_id)
   end
-
-
 
 end
