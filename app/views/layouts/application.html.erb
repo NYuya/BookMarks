@@ -79,10 +79,6 @@
     <div class="container">
       <%= yield %>
     </div>
-    <div class="row">
-      <span class="pull-right" id="back"><a href="#" style="font-size:40px; color:white;"><i
-            class="fas fa-chevron-circle-up"></i></a></span>
-    </div>
   </main>
 
 
@@ -107,29 +103,24 @@
 
       <div class="row">
 
-        <div class="col-xs-2">
+        <div class="col-xs-3 col-xs-offset-0">
           <div class="footer-text-headline">About Us</div>
           <div class="footer-text"><%= link_to 'Top', root_path, class: "footer-text"%></div>
-          <div class="footer-text"><%= link_to 'Top', root_path, class: "footer-text"%></div>
+          <div class="footer-text"><%= link_to 'about', "/#page1", class: "footer-text"%></div>
         </div>
 
-        <div class="col-xs-2">
-          <div class="footer-text-headline">Products</div>
+        <div class="col-xs-3">
+          <div class="footer-text-headline">Index</div>
+          <div class="footer-text"><%= link_to 'Favorite BookMarks', "/#page3", class: "footer-text"%></div>
+          <div class="footer-text"><%= link_to "Everyone's BookMarks", bookmarks_path, class: "footer-text"%></div>
         </div>
 
-        <div class="col-xs-2">
-          <div class="footer-text-headline">Service</div>
-        </div>
-
-        <div class="col-xs-2">
-          <div class="footer-text-headline">Support</div>
-        </div>
-
-        <div class="col-xs-2">
+        <div class="col-xs-3">
           <div class="footer-text-headline">Learn</div>
+          <div class="footer-text"><%= link_to 'How to use', "/#page2", class: "footer-text"%></div>
         </div>
 
-        <div class="col-xs-2">
+        <div class="col-xs-3">
           <div class="footer-text-headline">Community</div>
           <a href="https://twitter.com/Yuya43492396" style="font-size:25px; color:white;"><i
               class="fab fa-twitter-square"></i></a>

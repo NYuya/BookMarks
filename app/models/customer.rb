@@ -40,5 +40,8 @@ class Customer < ApplicationRecord
 
   attachment :customer_image, destroy: false
 
+  validates :customer_name, length: { maximum: 20 }
+  validates :customer_introduction, length: { maximum: 50 }
+
 
 end

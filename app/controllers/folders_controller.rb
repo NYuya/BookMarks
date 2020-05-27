@@ -21,8 +21,10 @@ class FoldersController < ApplicationController
     if @newfolder.save #入力されたデータをdbに保存する。
       redirect_to customer_path(@customer.id), noticefolder: "successfully created folder!"#保存された場合の移動先を指定。
     else
-      @folders = Folder.all
-      redirect_back(fallback_location: root_path)
+      @folders = current_customer.folders
+      @newbookmark = Bookmark.new
+      @bookmarks = current_customer.bookmarks
+      render "customers/customers/show"
     end
   end
 

@@ -44,4 +44,12 @@ class Customers::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:customer_name,:customer_introduction,:is_customer_status,:customer_image)
   end
+
+  def baria_customer
+    @customer = Customer.find(params[:id])
+  	if current_customer != @customer
+  		redirect_to customer_path(current_customer)
+  	end
+   end
+
 end

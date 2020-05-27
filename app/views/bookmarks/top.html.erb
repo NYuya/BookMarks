@@ -1,34 +1,44 @@
 <div class="row">
   <div class="topvisual">
-    <div class="col-xs-10 col-xs-offset-0 pull-left">
+    <div class="col-xs-8 col-xs-offset-0 pull-left">
       <div class="topvisual-text">
         <span style="font-size:58px;">At-a-glance bookmarks</span>
       </div>
-      <p class="topvisual-text">一目でわかるブックマーク</p>
+      <p class="topvisual-text" style="font-size:20px;">一目でわかるブックマーク</p>
+    </div>
+    <div class="col-xs-4 col-xs-offset-0 pull-right">
+      <div class="topvisual-text2">Bookmarksは</div>
+      <p class="topvisual-text2">
+        ブックマークしたサイトを一目で分かりやすく整理することができます。<br>
+        自身がブックマークしたサイトを見つける事ができない！！と言った日常の不便さを解決してくれます。
+      </p>
+      <div id="sampleScrollSpy">
+        <div class="collapse navbar-collapse pull-right" id="sampleNavbar">
+          <ul class="nav navbar-nav">
+            <li><a class="linkInThePage" href="#page1"
+                style="font-family: 'Roboto, sans-serif'; font-size:20px; color:white;">about</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<div id="sampleScrollSpy">
-  <div class="collapse navbar-collapse" id="sampleNavbar">
-    <ul class="nav navbar-nav">
-      <li><a class="linkInThePage" href="#page1">about</a></li>
-    </ul>
-  </div>
-</div>
 
 
 
-<h3>Everyone's BookMarks</h3>
+<div id="page3"></div><br><br><br>
+<h2 style="font-family: 'Roboto, sans-serif';">Favorite BookMarks</h2>
 <!--books一覧 -->
 <table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th>ユーザー</th>
-      <th>サイト画面</th>
-      <th>サイトURL</th>
-      <th>いいね</th>
-      <th>詳細</th>
-    </tr>
+  <thead></thead>
+  <tr>
+    <th>ユーザー</th>
+    <th>サイト画面</th>
+    <th>サイトURL</th>
+    <th>いいね</th>
+    <th>詳細</th>
+  </tr>
   </thead>
   <tbody>
     <% @bookmarks.each do |bookmark| %>
@@ -71,22 +81,108 @@
   </tbody>
 </table>
 
-<h3>How to use</h3>
-
-
-
-
-
-<div class="container py-2">
-  <div id="page1">
-    <h3>ページ1</h3>
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-    <p>スクロールしてみて下さい。</p>
-    ...
+<div class="container">
+  <div class="row">
+    <div id="page1"><br><br><br>
+      <h2 style="font-family: 'Roboto, sans-serif';">about</h2>
+      <div class="col-xs-6 col-xs-offset-0">
+        <p class="topabout text-center">ブックマークの管理を行い、利便性を高めます</p>
+        <p class="topabout text-center">複数のサイトをブックマークした際に『あのサイトどれだっけ？？』となった経験はないでしょうか？
+          そのような際にブックマーク一覧に、各サイトが一目で確認できるようなものがあれば良いなと思い生まれたのかBookMarksです。</p><br>
+        <p class="topabout text-center">新たな挑戦</p>
+        <p class="topabout text-center">自身がブックマークしているサイトから判断して、新たにおすすめのサイトを紹介する機能を追加予定。coming soon</p>
+      </div>
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="topaboutimage"></div>
+      </div>
+    </div>
   </div>
+
+  <div class="row">
+    <div id="page2"><br><br><br>
+      <h2 style="font-family: 'Roboto, sans-serif';">How to use</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowtoimage1"></div>
+      </div>
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowto1 text-center">
+          <span style="font-size:20px;">My pageの各種機能紹介</span>
+        </div>
+        <p class="tophowto1 text-center">・ブックマークの新規登録</p>
+        <p class="tophowto1 text-center">・登録したブックマークを任意のフォルダに入れる</p>
+        <p class="tophowto1 text-center">・登録しているブックマークをCSVで取り出す（エクスポート）</p>
+        <p class="tophowto1 text-center">・登録したいブックマークをCSVでまとめて入力（インポート）</p>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowto2 text-center"><br><br>
+          <span style="font-size:20px;">ブックマークの新規登録</span>
+        </div>
+        <p class="tophowto2 text-center">
+          ・New bookMarkの入力フォームにお好みのURLリンクを入力ください。<br>
+          ・その後、登録ボタンを押すとMy pageに追加されます。<br>
+        </p>
+      </div>
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowtoimage2"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowto3 text-center">
+          <span style="font-size:20px;">CSV エクスポート</span>
+        </div>
+        <p class="tophowto3 text-center">
+          ・CSVボタンをクリックすると登録中のブックマークをダウンロードできます。
+        </p>
+        <div class="tophowto3 text-center">
+          <span style="font-size:20px;">CSV インポート</span>
+        </div>
+        <p class="tophowto3 text-center">
+          ・ファイル選択ボタンよりインポートするCSVデータを選択します。<br>
+          ・選択が完了すればインポートボタンを押します。<br>
+          <br>
+          CSVインポートする
+          <a href="https://drive.google.com/file/d/1BJwpcvAFFkGp2EL4tyLZowgnTIHllFC8/view?usp=sharing"
+            style="font-size:20px; ">テンプレートデータはこちら</a>です。
+
+        </p>
+      </div>
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowtoimage3"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowtoimage4"></div>
+      </div>
+      <div class="col-xs-6 col-xs-offset-0">
+        <div class="tophowto4 text-center">
+          <span style="font-size:20px;">登録したブックマークを任意のフォルダに入れる</span>
+        </div>
+        <p class="tophowto text-center">・フォルダ新規作成のフォームから任意の名前を入力する。</p>
+        <p class="tophowto text-center">・作成されるとFolder indexに表示されます。</p>
+        <p class="tophowto text-center">・登録したブックマークのeditページからフォルダを選択します。</p>
+        <p class="tophowto text-center">・Folder indexのフォルダをクリックするとソートされます。</p>
+        </p>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+      <span class="pull-right" id="back"><a href="#" style="font-size:40px; "><i
+            class="fas fa-chevron-circle-up"></i></a></span>
+    </div>
+  </div>
+</div>
 </div>
 
 

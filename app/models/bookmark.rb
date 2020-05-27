@@ -8,14 +8,15 @@ class Bookmark < ApplicationRecord
 	
 	attachment :bookmark_image
 
+	validates :bookmark_description, length: { maximum: 50 }
 	validates :bookmark_url, presence: true
-
+	validate :get_tittle
 	
 
 	
-		def favorited_by?(customer)
-			favorites.where(customer_id: customer.id).exists?
-		end
+	def favorited_by?(customer)
+		favorites.where(customer_id: customer.id).exists?
+	end
 
 
 
@@ -45,23 +46,26 @@ class Bookmark < ApplicationRecord
 	require 'open-uri'
 	require 'nokogiri'
 
-	def get_tittle(url)
+	def get_tittle
+		begin
+		url = self.bookmark_url
+		charset = nil
+		html = open(url) do |f|
+			charset = f.charset # 文字種別を取得
+			f.read # htmlを読み込んで変数htmlに渡す
+		end
 
-	# スクレイピング先のURL
-	# url = 'https://coinmarketcap.com/'
-
-	charset = nil
-	html = open(url) do |f|
-	  charset = f.charset # 文字種別を取得
-	  f.read # htmlを読み込んで変数htmlに渡す
-	end
-
-	# htmlをパース(解析)してオブジェクトを生成
-	doc = Nokogiri::HTML.parse(html, nil, charset)
-
-	# タイトルを表示
-	p doc.title
-	doc.title
+		
+			doc = Nokogiri::HTML.parse(html, nil, charset)# htmlをパース(解析)してオブジェクトを生成
+			p doc.title# タイトルを表示
+			doc.title
+	
+		rescue => error
+			errors.add(:bookmark_url, "の内容が不正です")
+		end
+		# doc = Nokogiri::HTML.parse(html, nil, charset)# htmlをパース(解析)してオブジェクトを生成
+		# p doc.title# タイトルを表示
+		# doc.title
 	end
 # bookmark_nameスクレイピングーーーーー↑
 
