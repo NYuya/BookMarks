@@ -1,4 +1,9 @@
+require 'open-uri'
+require 'nokogiri'
+
 class BookmarksController < ApplicationController
+
+
 
   before_action :authenticate_customer!, except:[:top, :index, :show]
 
@@ -26,7 +31,11 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @newbookmark = Bookmark.new(bookmark_params) #Bookmarkモデルのテーブルを使用しているのでbookmarkコントローラで保存する。    
+    @newbookmark = Bookmark.new(bookmark_params) #Bookmarkモデルのテーブルを使用しているのでbookmarkコントローラで保存する。  
+    
+    tittle = get_tittle(params[:bookmark][:bookmark_url]) #スクレイピング「タイトル」 private method
+    @newbookmark.bookmark_name = tittle
+
     @newbookmark.customer_id = current_customer.id
     @customer = current_customer
     if @newbookmark.save #入力されたデータをdbに保存する。
@@ -67,5 +76,27 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:customer_id, :bookmark_name, :bookmark_url, :bookmark_description, :genre_id, :folder_id, :bookmark_image, :is_bookmark_status, :bookmark_screenshot_id)
   end
+
+  # bookmark_nameスクレイピングーーーーー↓
+	def get_tittle(url)
+
+		begin
+			charset = nil
+				html = open(url) do |f|
+					charset = f.charset # 文字種別を取得
+					f.read # htmlを読み込んで変数htmlに渡す
+				end
+
+			doc = Nokogiri::HTML.parse(html, nil, charset)# htmlをパース(解析)してオブジェクトを生成
+			p doc.title# タイトルを表示
+			doc.title
+
+		rescue => error
+      # errors.add(:bookmark_url, "の内容が不正です")
+      return ""
+		end
+
+	end
+  # bookmark_nameスクレイピングーーーーー↑
 
 end
