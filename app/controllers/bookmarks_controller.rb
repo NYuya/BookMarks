@@ -3,16 +3,15 @@ require 'nokogiri'
 
 class BookmarksController < ApplicationController
 
-
-
   before_action :authenticate_customer!, except:[:top, :index, :show]
 
   def top
-    @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
+  @bookmarks = Bookmark.find(Favorite.group(:bookmark_id).order('count(bookmark_id) desc').limit(5).pluck(:bookmark_id))
   end
 
   def index
-    @bookmarks = Bookmark.all #一覧表示するためにBookmarkモデルの情報を全てall
+    @bookmarks = Bookmark.all.order(id: "DESC")
+    # @bookmarks = Bookmark.limit(2).order(id: "DESC")
     @newbookmark = Bookmark.new
   end
 

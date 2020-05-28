@@ -10,7 +10,6 @@ class Bookmark < ApplicationRecord
 
 	validates :bookmark_description, length: { maximum: 50 }
 	validates :bookmark_url, presence: true
-	# validate :get_tittle
 	validates :bookmark_url, format: URI::regexp(%w(http https))
 	
 
