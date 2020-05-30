@@ -78,39 +78,10 @@
         </tr>
       </thead>
       <tbody>
-        <% @bookmarks.each do |bookmark| %>
-          <tr>
-            <td>
-              <iframe src="<%= bookmark.bookmark_url %>" width="200" height="150" scrolling=”auto”>
-              </iframe>
-            </td>
-            <td>
-              <%= link_to bookmark.bookmark_name, bookmark, class: "book_#{bookmark.id}" %>
-              <br>
-              <br>
-              <%= link_to bookmark.bookmark_url, bookmark.bookmark_url %>
-              <br>
-              <%= link_to "サイトへ GO!",bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
-            </td>
-            <td><%= bookmark.bookmark_description %></td>
-            <td>
-              <% if bookmark.is_bookmark_status == false %>
-                <span class="text-danger">非公開中</span>
-              <% else %>
-                <span class="text-success">公開中</span>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to "Show",bookmark_path(bookmark), class: "btn-sm btn-primary bookmark_#{bookmark.id}" %>
-              <br>
-              <br>
-              <% if bookmark.customer == current_customer %>
-                <%= link_to "Edit",edit_bookmark_path(bookmark), class: "btn-sm btn-success edit_bookmark_#{bookmark.id}" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
+          <% @bookmarks.each do |bookmark| %>
+            <%= render "customers/customers/customer_bookmark_index", bookmark: bookmark %>
+          <% end %>
+        </tbody>
     </table>
   </div>
 </div>
