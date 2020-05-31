@@ -16,12 +16,16 @@
           <th><%= @customer.customer_introduction %></th>
         </tr>
         <tr>
-          <th>follows</th>
+          <th><%= link_to "follows", followed_path(@customer.id) %></th>
           <th><%= link_to "#{@customer.follower.count} ", followed_path(@customer.id) %></th>
         </tr>
         <tr>
-          <th>followers</th>
+          <th><%= link_to "followers", follower_path(@customer.id) %></th>
           <th><%= link_to @customer.followed.count , follower_path(@customer.id) %></th>
+        </tr>
+        <tr>
+          <th><%= link_to "いいね一覧", customer_favorites_path(@customer.id) %></th>
+          <th><%= link_to @customer.favorites.count , customer_favorites_path(@customer.id) %></th>
         </tr>
       </table>
       <%= render "relationships/follow_button", customer: @customer %><br>

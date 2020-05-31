@@ -9,6 +9,8 @@ class Customer < ApplicationRecord
   has_many :folders, dependent: :destroy
   has_many :genres, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_items, through: :likes, source: :item
+
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
@@ -36,6 +38,10 @@ class Customer < ApplicationRecord
 
   def following?(other_customer)
     self.followings.include?(other_customer)
+  end
+
+  def active_for_authentication?
+    super && (self.is_customer_status == false)
   end
 
   attachment :customer_image, destroy: false

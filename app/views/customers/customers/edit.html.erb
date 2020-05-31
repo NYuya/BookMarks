@@ -27,7 +27,8 @@
     </tr>
     <tr>
       <th></th>
-      <th><%= f.submit %></th>
+      <th><%= f.submit '編集内容を保存する', class: "btn btn-primary"%></th>
+      <th><%= link_to "退会する",  customers_confirm_path, class: "btn btn-danger" %></th>
     </tr>
   </table>
 

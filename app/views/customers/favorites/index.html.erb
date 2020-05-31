@@ -1,0 +1,54 @@
+<h2>いいね一覧</h2>
+<% if @favorites.count > 0 %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>ユーザー</th>
+      <th>サイト画面</th>
+      <th>サイトURL</th>
+      <th>いいね</th>
+      <th>詳細</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @favorites.each do |favorite| %>
+        <tr>
+          <td>
+            <%= link_to (favorite.bookmark.customer) do %>
+            <%= attachment_image_tag(favorite.bookmark.customer, :customer_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+            <br><%= favorite.bookmark.customer.customer_name %>
+            <% end %>
+          </td>
+          <td>
+            <iframe id="inline-frame" scrolling="no" src="<%= favorite.bookmark.bookmark_url %>" width="300px" height="100px"
+              scrolling=”auto” sandbox>
+            </iframe>
+          </td>
+          <td>
+            <%= link_to favorite.bookmark.bookmark_name, favorite.bookmark.bookmark_url %>
+            <br>
+            <%= link_to favorite.bookmark.bookmark_url do %>
+            <img src="https://www.google.com/s2/favicons?domain=<%=favorite.bookmark.bookmark_url%>">
+            <%end%>
+            <%= link_to favorite.bookmark.bookmark_url, favorite.bookmark.bookmark_url %><br>
+            <%= link_to "サイトへ GO!", favorite.bookmark.bookmark_url, class: "btn-sm btn-success edit_bookmark_#{favorite.bookmark.id}" %>
+          </td>
+          <td id="favorites_buttons_<%= favorite.bookmark.id %>">
+            <%= render partial: 'favorites/favorite', locals: { bookmark: favorite.bookmark} %>
+          </td>
+          <td>
+            <div class="comment-list bt style-2" id="comments">
+              <div class="float-wrapper">
+                <h4 class="comment-count"><%= favorite.bookmark.bookmark_comments.count %>件コメント</h4>
+              </div>
+            </div>
+            <%= link_to "詳細ページへ", bookmark_path(favorite.bookmark), class: "btn-sm btn-primary edit_bookmark_#{favorite.bookmark.id}" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>「いいね」しているbookmarkは、ありません</p>
+<% end %>

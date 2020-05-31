@@ -5,20 +5,17 @@ class Bookmark < ApplicationRecord
 
   has_many :bookmark_comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
-	
+	has_many :favorite_items, through: :likes, source: :item
+
 	attachment :bookmark_image
 
 	validates :bookmark_description, length: { maximum: 50 }
 	validates :bookmark_url, presence: true
 	validates :bookmark_url, format: URI::regexp(%w(http https))
 	
-
-	
 	def favorited_by?(customer)
 		favorites.where(customer_id: customer.id).exists?
 	end
-
-
 
 # bookmarkインポートーーーーー↓
 	def self.import(file, current_customer)
