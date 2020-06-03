@@ -13,6 +13,7 @@ class BookmarkCommentsController < ApplicationController
     bookmark = Bookmark.find(params[:bookmark_id])
     comment = current_customer.bookmark_comments.new(bookmark_comment_params)
     comment.bookmark_id = bookmark.id
+    comment.score = Language.get_data(bookmark_comment_params[:bookmark_comment])
     comment.save
     redirect_back(fallback_location: root_path)
   end

@@ -37,7 +37,7 @@ class Customers::SessionsController < Devise::SessionsController
         redirect_to new_customer_session_path
       end
     else
-      flash[:error] = "必須項目を入力してください。"
+      flash[:error] = "Email,Passwordを入力してください。"
     end
   end
 

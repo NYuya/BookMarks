@@ -4,6 +4,7 @@ class CreateBookmarkComments < ActiveRecord::Migration[5.2]
       t.integer :bookmark_id
       t.integer :customer_id
       t.text :bookmark_comment
+      t.integer :score
 
       t.timestamps
     end

@@ -86,8 +86,8 @@ gem "refile-mini_magick"        #画像のサイズ変更
 gem 'nokogiri'                  #スクレイピング
 gem 'roo'                       #CSVファイルからデータをインポート
 
+gem 'dotenv-rails'              #環境変数 google natural language apiのkey
 
-gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
