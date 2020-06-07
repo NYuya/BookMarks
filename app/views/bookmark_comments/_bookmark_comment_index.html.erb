@@ -6,7 +6,7 @@
 				<%= bookmark_comment.customer.customer_name %>
 			<% end %>
 			<%= bookmark_comment.bookmark_comment %>
-			<%= bookmark_comment.score %>
+			<%# <%= bookmark_comment.score %> %>
 			<% if bookmark_comment.customer == current_customer %>
 				<%= link_to "Destroy", bookmark_bookmark_comments_path(@bookmark, bookmark_comment_id: bookmark_comment.id), method: :delete , class: "btn-sm btn-danger" %>
 			<% end %>
