@@ -3,8 +3,10 @@
 	<thead class="thead-lignt">
 		<tr>
 			<th>会員ID</th>
+			<th>クリエイトタイム</th>
 			<th>氏名</th>
 			<th>メールアドレス</th>
+			
 			<th>ステータス</th>
 		</tr>
 	</thead>
@@ -12,8 +14,10 @@
 		<% @customers.each do |customer| %>
 			<tr>
 				<td><%= customer.id %></td>
+				<td><%= customer.created_at %></td>
 				<td><%= link_to customer.customer_name, admins_customer_path(customer.id) %></td>
 				<td><%= customer.email %></td>
+				
 				<td>
 					<% if customer.is_customer_status == false %>
 						<span class="text-success">有効会員</span>
@@ -25,3 +29,4 @@
 		<% end %>
 	</tbody>
 </table>
+

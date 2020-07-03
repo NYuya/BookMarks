@@ -1,2 +1,31 @@
-<h1>Admins::Customers#show</h1>
-<p>Find me in app/views/admins/customers/show.html.erb</p>
+
+<div class="row">
+  <table class="table table-hover">
+    <tr>
+      <%= attachment_image_tag(@customer, :customer_image, :fill, 150, 150, fallback: "no_image.jpg") %>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th><%= @customer.customer_name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= @customer.customer_introduction %></th>
+    </tr>
+    <tr>
+      <th><%= link_to "follows", followed_path(@customer.id) %></th>
+      <th><%= link_to "#{@customer.follower.count} ", followed_path(@customer.id) %></th>
+    </tr>
+    <tr>
+      <th><%= link_to "followers", follower_path(@customer.id) %></th>
+      <th><%= link_to @customer.followed.count , follower_path(@customer.id) %></th>
+    </tr>
+    <tr>
+      <th><%= link_to "いいね一覧", customer_favorites_path(@customer.id) %></th>
+      <th><%= link_to @customer.favorites.count , customer_favorites_path(@customer.id) %></th>
+    </tr>
+  </table>
+
+
+  <%= link_to 'プロフィール編集',edit_admins_customer_path(@customer), class: "col-xs-9 col-xs-offset-1 text-center btn btn-default edit_user_#{@customer.id}" %>
+</div>
