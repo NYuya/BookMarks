@@ -1,2 +1,35 @@
-<h1>Admins::Customers#edit</h1>
-<p>Find me in app/views/admins/customers/edit.html.erb</p>
+<h2>User info</h2>
+<%= form_for(@customer) do |f| %>
+
+<!-- エラーメッセージ表示-->
+  <% if @customer.errors.any? %>
+    <h3><%= @customer.errors.count %>error occurrence</h3><!--エラーメッセ-->
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<!-- エラーメッセージ表示-->
+
+  <table class="table table-hover">
+    <tr>
+      <th><%= f.label :image %></th>
+      <th><%= f.attachment_field :customer_image, class: "customer_image" %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :name %></th>
+      <th><%= f.text_field :customer_name, class: "customer_name" %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :introduction %></th>
+      <th><%= f.text_area :customer_introduction, class: "customer_introduction" %></th>
+    </tr>
+    <tr>
+      <th></th>
+      <th><%= f.submit '編集内容を保存する', class: "btn btn-primary"%></th>
+      <th><%= link_to "退会させる",  customers_confirm_path, class: "btn btn-danger" %></th>
+    </tr>
+  </table>
+
+<% end %>
