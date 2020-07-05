@@ -26,9 +26,16 @@
       <th><%= f.text_area :customer_introduction, class: "customer_introduction" %></th>
     </tr>
     <tr>
+			<th>ステータス</th>
+			<td>
+				<label><%= f.radio_button :is_customer_status, "false" %>有効会員</label>
+				<label><%= f.radio_button :is_customer_status, "ture" %>退会済み</label>
+			</td>
+		</tr>
+    <tr>
       <th></th>
       <th><%= f.submit '編集内容を保存する', class: "btn btn-primary"%></th>
-      <th><%= link_to "退会させる",  customers_confirm_path, class: "btn btn-danger" %></th>
+      <th><%= link_to "退会させる",  admins_customer_path(@customer), class: "btn btn-danger" %></th>
     </tr>
   </table>
 

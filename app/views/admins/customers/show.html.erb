@@ -24,6 +24,16 @@
       <th><%= link_to "いいね一覧", customer_favorites_path(@customer.id) %></th>
       <th><%= link_to @customer.favorites.count , customer_favorites_path(@customer.id) %></th>
     </tr>
+    <tr>
+    <th>ステータス</th>
+    <th>
+      <% if @customer.is_customer_status == false %>
+        <span class="text-success">有効会員</span>
+      <% else %>
+        <span class="text-danger">退会済み</span>
+      <% end %>
+    </th>
+    </tr>
   </table>
 
 
