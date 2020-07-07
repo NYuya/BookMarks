@@ -1,5 +1,5 @@
 class Customers::CustomersController < ApplicationController
-  before_action :authenticate_customer!, except:[:top, :index ]
+  before_action :authenticate_customer!, except:[:top, :index]
   before_action :baria_customer, only: [:edit, :update]
 
   def show
@@ -17,10 +17,15 @@ class Customers::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+    # if @customer == current_customer
+    #   render "edit"      
+    # else
+    #   redirect_to customer_path(current_customer)
+    # end
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])    
     if @customer.update(customer_params)
       redirect_to customer_path(current_customer), notice: "successfully updated customer!"
     else
@@ -41,20 +46,17 @@ class Customers::CustomersController < ApplicationController
   end
 
   private
+  
   def customer_params
     params.require(:customer).permit(:customer_name,:customer_introduction,:is_customer_status,:customer_image)
   end
   
-
   def baria_customer
     @customer = Customer.find(params[:id])
-    @admin = Admin.find(params[:id])
-    if @admin == @customer
-      @customer.update(customer_params)
-      redirect_to admins_customers_path, notice: "successfully updated customer!"
-    else current_customer != @customer
-  		redirect_to customer_path(current_customer)
-  	end
-   end
+    if current_customer != @customer
+      redirect_to customer_path(current_customer)
+    end
+    
+  end
 
 end

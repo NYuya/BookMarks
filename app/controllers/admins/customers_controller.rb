@@ -21,10 +21,11 @@ class Admins::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to admins_customers_path
   end
+  
 
 
   private
-  
+
   def customer_params
     params.require(:customer).permit(:customer_name,:customer_introduction,:is_customer_status,:customer_image)
   end
