@@ -17,7 +17,7 @@
 			<% @bookmarks.each do |bookmark| %>
 				<tr>
 					<th><%=bookmark.id%></th>
-					<td><%= link_to bookmark.bookmark_name, admins_bookmark_path(bookmark.id) %></td>
+					<td><%= link_to bookmark.bookmark_name, bookmark_path(bookmark.id) %></td>
 					<td><%= bookmark.bookmark_url %></td>
 					<td>
 						<% if bookmark.is_bookmark_status == false %>
