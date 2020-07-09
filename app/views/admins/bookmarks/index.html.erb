@@ -18,7 +18,10 @@
 				<tr>
 					<th><%=bookmark.id%></th>
 					<td><%= link_to bookmark.bookmark_name, bookmark_path(bookmark.id) %></td>
-					<td><%= bookmark.bookmark_url %></td>
+					<td><%= link_to bookmark.bookmark_url do %>
+						<img src="https://www.google.com/s2/favicons?domain=<%=bookmark.bookmark_url%>" width="20px" height="20px">
+					<%end%>
+					<%= bookmark.bookmark_url %></td>
 					<td>
 						<% if bookmark.is_bookmark_status == false %>
 	            <span class="text-danger">非公開中</span>
