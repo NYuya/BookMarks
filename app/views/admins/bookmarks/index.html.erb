@@ -17,11 +17,6 @@
 			<% @bookmarks.each do |bookmark| %>
 				<tr>
 					<th><%=bookmark.id%></th>
-					<td>
-						<%= link_to bookmark.bookmark_url do %>
-							<iframe id="inline-frame" scrolling="no" src="<%= bookmark.bookmark_url %>" width="40px" height="15px" sandbox></iframe>
-						<%end%>
-					</td>
 					<td><%= link_to bookmark.bookmark_name, bookmark_path(bookmark.id) %></td>
 					<td><%= link_to bookmark.bookmark_url do %>
 						<img src="https://www.google.com/s2/favicons?domain=<%=bookmark.bookmark_url%>" width="20px" height="20px">
@@ -35,7 +30,7 @@
 	          <% end %>
 					</td>
 					<td><%= bookmark.customer_id %></td>
-					<td><%= bookmark.customer.customer_name %></td>
+					<td><%= link_to bookmark.customer.customer_name, admins_customer_path(bookmark.customer.id)%></td>
 				</tr>
 			<% end %>
 		</tbody>

@@ -3,7 +3,8 @@ class Admins::BookmarksController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-  	@bookmarks = Bookmark.all
+    @bookmarks = Bookmark.all
+    
   end
 
   def show
